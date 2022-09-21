@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/CCvote"
+            style="@style/mainpage_button"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="364dp"
+            android:layout_marginEnd="70dp"
+            android:text="@string/candidates"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/verifyTextUser" />
+
+        <Button
+            android:id="@+id/vote"
+            style="@style/mainpage_button"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="70dp"
+            android:text="Vote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CCvote" />
+
+        <Button
+            android:id="@+id/result"
+            style="@style/mainpage_button"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="70dp"
+            android:text="Result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vote" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/HCvote"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:layout_marginStart="70dp"-->
+        <!--            android:layout_marginLeft="70dp"-->
+        <!--            android:layout_marginTop="33dp"-->
+        <!--            android:layout_marginEnd="70dp"-->
+        <!--            android:layout_marginRight="70dp"-->
+        <!--            android:onClick="logout_user"-->
+        <!--            android:text="Logout"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/vote" />-->
+
+        <TextView
+            android:id="@+id/verifyTextUser"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/please_click_here_to_verify_email"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/CCvote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/vote1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

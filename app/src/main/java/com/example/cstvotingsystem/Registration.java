@@ -70,6 +70,7 @@ public class Registration extends AppCompatActivity {
         userregister_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(Registration.this, UserActivity.class));
 
                 //obtain the enter data
                 String user_id = userid.getText().toString();
