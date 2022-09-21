@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436694557633",
+    "project_id": "cst-voting-system",
+    "storage_bucket": "cst-voting-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436694557633:android:9d42b4214d2f9e0ef80540",
+        "android_client_info": {
+          "package_name": "com.example.cstvotingsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436694557633-u08v31nmht64uj2jsjml67bn3f6kan5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfzikdVLRzXUMe7bq8GS-nDmQjhQnW-cs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436694557633-u08v31nmht64uj2jsjml67bn3f6kan5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
