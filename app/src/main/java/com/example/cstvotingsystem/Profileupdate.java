@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class profileupdate extends AppCompatActivity {
+public class Profileupdate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
