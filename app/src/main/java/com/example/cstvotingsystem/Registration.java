@@ -55,11 +55,6 @@ public class Registration extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
 
 
-
-
-
-
-
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +75,7 @@ public class Registration extends AppCompatActivity {
                 String user_Name = userName.getText().toString();
                 String textGender;
 
-   //             int selectedgender = genderbtn.getCheckedRadioButtonId();
-   //             genderbtn = findViewById(selectedgender );
+
 
                 if (TextUtils.isEmpty(user_id)) {
                 //    Toast.makeText(Registration.this, "Please eneter your Student ID", Toast.LENGTH_SHORT).show();

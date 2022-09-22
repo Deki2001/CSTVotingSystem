@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
     boolean valid = true;
     FirebaseAuth fAuth;
     FirebaseUser firebaseUser;
-    TextView registerLink,forgotPass;
+    TextView registerLink,forgotPass,loginText;
     ProgressBar progressBar;
     private static final String TAG = "Login";
 
@@ -62,6 +62,14 @@ public class Login extends AppCompatActivity {
         forgotPass = findViewById(R.id.forgotPassword);
         registerLink = findViewById(R.id.register_text);
         progressBar = findViewById(R.id.progressbar);
+        loginText =  findViewById(R.id.login);
+
+        loginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, AdminActivity.class));
+            }
+        });
 
         showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -77,6 +85,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     startActivity(new Intent(getApplicationContext(), Registration.class));
+
                 }
             });
         forgotPass.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +132,8 @@ public class Login extends AppCompatActivity {
 
         // login User
         loginBtn.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 String textEmail = email.getText().toString();
@@ -146,43 +157,7 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-       /* loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!validateEmail()) {
-                    return;
-                }
-                checkField(email);
-                checkField(password);
-                Log.d("TAG", "onClick: " + email.getText().toString());
 
-              //  pd.setTitle("Logging in...");
-              //  pd.show();
-
-                if(valid) {
-                    fAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            if (fAuth.getCurrentUser().isEmailVerified()) {
-                             //   pd.dismiss();
-                                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                               // checkUserAccessLevel(authResult.getUser().getUid());
-                            }
-                            else {
-                            //    pd.dismiss();
-                                Toast.makeText(Login.this, "Please Verify Your Email To Login.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                         //   pd.dismiss();
-                            Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            }
-        });*/
     }
 
     private void LoginUser(String textEmail, String textPass) {
@@ -213,35 +188,4 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
-
-
-  /*  private boolean validateEmail() {
-        String emailInput = email.getText().toString().trim();
-
-        if (emailInput.isEmpty()) {
-            email.setError("Field can't be empty");
-            return false;
-        } /*else if (!EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            email.setError("Please enter a valid email address");
-            return false;
-        }
-        else {
-            email.setError(null);
-            return true;
-        }
-    }
-    public boolean checkField(EditText textField){
-        if(textField.getText().toString().isEmpty()){
-            textField.setError("Error");
-            valid = false;
-        }else {
-            valid = true;
-        }
-
-        return valid;
-    }*/
-
-
-
 }
