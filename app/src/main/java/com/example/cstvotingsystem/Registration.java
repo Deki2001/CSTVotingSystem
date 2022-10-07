@@ -129,7 +129,7 @@ public class Registration extends AppCompatActivity {
                 else {
 
                     progressBar.setVisibility(View.VISIBLE);
-                    registerUser(user_id, user_Name,user_email,user_password);
+                    registerUser(user_id, user_Name,user_email,user_password);  // user
                 }
 
 
