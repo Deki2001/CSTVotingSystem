@@ -39,5 +39,7 @@
         if no action is performed by them. Every vote counts.
 
     </string>
+    <string name="vote">Vote</string>
+    <string name="result">Result</string>
 
 </resources>

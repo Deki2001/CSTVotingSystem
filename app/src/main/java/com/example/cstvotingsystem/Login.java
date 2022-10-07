@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -164,28 +165,28 @@ public class Login extends AppCompatActivity {
         fAuth.signInWithEmailAndPassword(textEmail, textPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                        try {
-                            throw task.getException();
+                } else {
+                    try {
+                        throw task.getException();
 
 
-                  //  Toast.makeText(Login.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+                        //  Toast.makeText(Login.this, "Something is wrong", Toast.LENGTH_SHORT).show();
 
-                        } catch (FirebaseAuthInvalidUserException e){
-                            email.setError("User does not exits or is no longer valid register again");
-                            email.requestFocus();
-                        } catch (FirebaseAuthInvalidCredentialsException e){
-                            email.setError("Invalid Credintial. Kindly, Check and re-enter");
-                            email.requestFocus();
-                        } catch (Exception e){
-                            Log.e(TAG, e.getMessage());
-                        }
+                    } catch (FirebaseAuthInvalidUserException e) {
+                        email.setError("User does not exits or is no longer valid register again");
+                        email.requestFocus();
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        email.setError("Invalid Credintial. Kindly, Check and re-enter");
+                        email.requestFocus();
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
             }
         });
     }
-}
+    }
+

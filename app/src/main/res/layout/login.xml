@@ -24,9 +24,10 @@
 
         <TextView
             android:id="@+id/login"
+            style="@style/title"
             android:layout_marginTop="8dp"
             android:text="@string/login"
-            style="@style/title"
+            android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo" />
@@ -38,13 +39,13 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="50dp"
+            android:background="@drawable/edit_text"
             android:drawableLeft="@drawable/ic_baseline_email_24"
             android:drawablePadding="5dp"
             android:hint="@string/enter_user_email"
             android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:background="@drawable/edit_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login" />
@@ -56,13 +57,13 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="50dp"
+            android:background="@drawable/edit_text"
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:drawablePadding="5dp"
             android:hint="@string/enter_password"
             android:inputType="textPassword"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
-            android:background="@drawable/edit_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +71,7 @@
 
         <CheckBox
             android:id="@+id/showpassword"
+            style="@style/blueText"
             android:layout_marginStart="120dp"
             android:layout_marginLeft="120dp"
             android:text="show password"
@@ -77,11 +79,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginPassword"
             app:layout_constraintVertical_bias="0.057"
-            tools:ignore="MissingConstraints"
-            style="@style/blueText"/>
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/gotoLogin"
+            style="@style/button"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="100dp"
@@ -89,7 +91,6 @@
             android:layout_marginEnd="100dp"
             android:background="@drawable/yellowbtn"
             android:text="@string/login"
-            style="@style/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,34 +98,36 @@
 
         <TextView
             android:id="@+id/forgotPassword"
+            style="@style/blueText"
             android:layout_marginTop="8dp"
             android:text="@string/forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gotoLogin"
-            style="@style/blueText"/>
+            app:layout_constraintTop_toBottomOf="@+id/gotoLogin" />
 
         <TextView
             android:id="@+id/register_text"
+            style="@style/blueText"
             android:layout_marginTop="24dp"
             android:text="Don't have an account? Register Here"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
-            style="@style/blueText"/>
+            app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
         <ProgressBar
+            android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="10dp"
-            android:id="@+id/progressbar"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

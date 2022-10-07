@@ -18,16 +18,12 @@ public class AdminActivity extends AppCompatActivity {
 
         vcandidate = findViewById(R.id.CCvote);
 
-        vcandidate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, VirewCandidates.class ));
-            }
-        });
+
     }
 
     public void viewCandidates(View view) {
     }
+
 
     public void registerCandidates(View view) {
     }
