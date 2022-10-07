@@ -43,9 +43,11 @@ public class Login extends AppCompatActivity {
     Button loginBtn;
     boolean valid = true;
     FirebaseAuth fAuth;
+    ImageView logo;
     FirebaseUser firebaseUser;
     TextView registerLink,forgotPass,loginText;
     ProgressBar progressBar;
+    TextView loginword;
     private static final String TAG = "Login";
 
 
@@ -58,19 +60,32 @@ public class Login extends AppCompatActivity {
         showpassword =findViewById(R.id.showpassword);
 
         email = findViewById(R.id.loginID);
+        loginword = findViewById(R.id.login);
         password = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.gotoLogin);
         forgotPass = findViewById(R.id.forgotPassword);
         registerLink = findViewById(R.id.register_text);
         progressBar = findViewById(R.id.progressbar);
         loginText =  findViewById(R.id.login);
+        logo = findViewById(R.id.logo);
 
-        loginText.setOnClickListener(new View.OnClickListener() {
+        logo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login.this, AdminActivity.class));
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), UserPage.class));
+
             }
         });
+
+
+        loginword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), adminpage.class));
+
+            }
+        });
+
 
         showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

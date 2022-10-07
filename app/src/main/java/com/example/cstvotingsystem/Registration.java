@@ -38,7 +38,7 @@ public class Registration extends AppCompatActivity {
     RadioGroup genderbtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
-    private static final  String TAG = "Registration";
+    //private static final  String TAG = "Registration";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +58,15 @@ public class Registration extends AppCompatActivity {
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Login.class));
+                startActivity(new Intent(getApplicationContext(), UserActivity.class));
             }
         });
 
-        userregister_Btn.setOnClickListener(new View.OnClickListener() {
+      /*  userregister_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 
                 //obtain the enter data
                 String user_id = userid.getText().toString();
@@ -133,11 +135,11 @@ public class Registration extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
     }
 
-    private void registerUser(String user_id, String user_name, String user_email, String user_password) {
+    /*private void registerUser(String user_id, String user_name, String user_email, String user_password) {
        fAuth = FirebaseAuth.getInstance();
         fAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -182,7 +184,10 @@ public class Registration extends AppCompatActivity {
 
             }
         });
+    }*/
+
+
+    public void onclick(View view) {
+
     }
-
-
 }

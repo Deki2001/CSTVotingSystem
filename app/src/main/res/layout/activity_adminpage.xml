@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
+    tools:context=".adminpage">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,7 +34,6 @@
             android:layout_marginTop="60dp"
             android:layout_marginEnd="70dp"
             android:background="@drawable/yellowbtn"
-            android:onClick="registerCandidates"
             android:text="@string/register_candidates"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.51"
@@ -47,7 +47,6 @@
             android:layout_height="68dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/yellowbtn"
-            android:onClick="viewCandidates"
             android:text="View Candidates"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.51"
@@ -55,20 +54,18 @@
             app:layout_constraintTop_toBottomOf="@+id/CCvote" />
 
         <!--        <TextView-->
-<!--            android:id="@+id/verifyTextUser"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="@string/please_click_here_to_verify_email"-->
-<!--            android:textStyle="bold"-->
-<!--            android:visibility="gone"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            tools:ignore="MissingConstraints" /> -->
+        <!--            android:id="@+id/verifyTextUser"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="@string/please_click_here_to_verify_email"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            tools:ignore="MissingConstraints" /> -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </ScrollView>
