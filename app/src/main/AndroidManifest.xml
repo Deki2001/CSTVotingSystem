@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cstvotingsystem">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -13,12 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CSTVotingSystem"
         tools:targetApi="31">
-        <activity
-            android:name=".VirewCandidates"
-            android:exported="false" />
-        <activity
-            android:name=".Userhome"
-            android:exported="false" />
+
         <activity
             android:name=".Registration"
             android:exported="false" />

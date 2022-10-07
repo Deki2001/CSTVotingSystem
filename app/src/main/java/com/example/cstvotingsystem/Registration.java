@@ -136,9 +136,6 @@ public class Registration extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     private void registerUser(String user_id, String user_name, String user_email, String user_password) {
