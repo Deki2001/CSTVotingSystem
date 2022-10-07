@@ -162,11 +162,7 @@ public class Registration extends AppCompatActivity {
                         }
                     });
 
-                  /* //open the user profile
-                    Intent intent = new Intent(Registration.this, userProfileActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish(); // to register Activity*/
+
                 }else {
                     try {
                         throw task.getException();

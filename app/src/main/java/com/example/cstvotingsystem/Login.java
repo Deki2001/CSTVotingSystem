@@ -64,7 +64,12 @@ public class Login extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
         loginText =  findViewById(R.id.login);
 
-        
+        loginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, AdminActivity.class));
+            }
+        });
 
         showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -79,7 +84,7 @@ public class Login extends AppCompatActivity {
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    startActivity(new Intent(getApplicationContext(), VirewCandidates.class));
+                    startActivity(new Intent(getApplicationContext(), Registration.class));
 
                 }
             });
