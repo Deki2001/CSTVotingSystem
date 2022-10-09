@@ -11,6 +11,7 @@
     android:colorForegroundInverse = "@color/foreground_material_light"
     android:colorPrimary = "@color/purple_700"
     android:gravity="center"
+
     app.popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
 </androidx.appcompat.widget.Toolbar>
