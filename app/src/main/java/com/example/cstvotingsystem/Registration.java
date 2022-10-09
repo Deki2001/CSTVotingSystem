@@ -148,6 +148,10 @@ public class Registration extends AppCompatActivity {
                //     Toast.makeText(Registration.this, "User Registration successful", Toast.LENGTH_SHORT).show();
                     FirebaseUser fuser = fAuth.getCurrentUser();
 
+                    //Enter User data into the real time database
+
+
+
 
                     //send varification email
                     fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
