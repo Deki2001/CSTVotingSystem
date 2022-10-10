@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends AppCompatActivity { //shss
 
     TextView loginLink;
     private static final Pattern EMAIL_ADDRESS = Pattern.compile
