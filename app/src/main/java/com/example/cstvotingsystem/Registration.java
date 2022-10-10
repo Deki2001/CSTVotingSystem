@@ -24,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.regex.Pattern;
@@ -74,7 +76,7 @@ public class Registration extends AppCompatActivity { //shss
                 String user_password = userPassword.getText().toString();
                 String confirm_password = confirmPassword.getText().toString();
                 String user_Name = userName.getText().toString();
-                String textGender;
+                String textGender = null;
 
 
 
@@ -130,7 +132,7 @@ public class Registration extends AppCompatActivity { //shss
                 else {
 
                     progressBar.setVisibility(View.VISIBLE);
-                    registerUser(user_id, user_Name,user_email,user_password);  // user
+                    registerUser(user_id, user_Name,textGender,user_email,user_password);  // user
                 }
 
 
@@ -139,8 +141,10 @@ public class Registration extends AppCompatActivity { //shss
 
     }
 
-    private void registerUser(String user_id, String user_name, String user_email, String user_password) {
+    private void registerUser(String user_id, String user_name,String text_gender, String user_email, String user_password) {
        fAuth = FirebaseAuth.getInstance();
+
+       //Create User Profile
         fAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -149,24 +153,50 @@ public class Registration extends AppCompatActivity { //shss
                     FirebaseUser fuser = fAuth.getCurrentUser();
 
                     //Enter User data into the real time database
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(user_id,user_name,text_gender,user_email,user_password);
 
+                    //Extracting User reference from Database for "Registered User"
+                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered User");
 
-
-
-                    //send varification email
-                    fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    referenceProfile.child(fuser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(Registration.this, "User Registered. Verification Email Has been Sent." +
-                                    "\nVerify Your Email To Login.", Toast.LENGTH_LONG).show();
-                            userid.setText("");
-                            userName.setText("");
-                            userEmail.setText("");
-                            userPassword.setText("");
-                            confirmPassword.setText("");
-                            progressBar.setVisibility(View.GONE);
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if(task.isComplete()){
+                                //send varification email
+                                fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(Registration.this, "User Registered. Verification Email Has been Sent." +
+                                                "\nVerify Your Email To Login.", Toast.LENGTH_LONG).show();
+                                        userid.setText("");
+                                        userName.setText("");
+                                        userEmail.setText("");
+                                        userPassword.setText("");
+                                        confirmPassword.setText("");
+                                        progressBar.setVisibility(View.GONE);
+                                       /*Intent intent = new Intent(Registration.this, UserPage.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity( intent);
+                                        finish();*/
+
+
+                                    }
+                                });
+                            }
+                            else{
+                                Toast.makeText(Registration.this, "User Registration Failed. Please Try Again", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+
+                            }
+
                         }
                     });
+
+
+
+
+
 
 
                 }else {
