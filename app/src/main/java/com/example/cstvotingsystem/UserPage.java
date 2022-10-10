@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class UserPage extends AppCompatActivity {
 
-    Button vote;
+    Button vote, result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class UserPage extends AppCompatActivity {
         setContentView(R.layout.activity_user_page);
 
         vote = findViewById(R.id.vote);
+        result = findViewById(R.id.result);
 
         vote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,7 +28,16 @@ public class UserPage extends AppCompatActivity {
 
             }
         });
-    }
+
+
+    result.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(getApplicationContext(), AboutPage.class));
+
+        }
+    });
+}
 
     public void candidate(View view) {
         startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
