@@ -30,7 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
-public class Registration extends AppCompatActivity { //shss
+public class Registration extends AppCompatActivity { //sgg
 
     TextView loginLink;
     private static final Pattern EMAIL_ADDRESS = Pattern.compile
