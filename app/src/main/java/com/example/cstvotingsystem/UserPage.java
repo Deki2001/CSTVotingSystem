@@ -47,8 +47,8 @@ public class UserPage extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+
+   /* public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
@@ -72,5 +72,5 @@ public class UserPage extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), AboutPage.class));
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
