@@ -4,10 +4,12 @@
     <item android:title="@string/user_profile"
         android:id="@+id/user_profile"
         app:showAsAction="never" />
+
     <item android:title="@string/about"
         android:id="@+id/about"
         app:showAsAction="never"/>
-    <item android:title="@string/log_out"
+
+    <item android:title="@string/logout"
         android:id="@+id/logout"
         app:showAsAction="never"/>
 </menu>

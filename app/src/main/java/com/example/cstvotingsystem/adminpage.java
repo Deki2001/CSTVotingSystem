@@ -34,8 +34,6 @@ public class adminpage extends AppCompatActivity {
 
             }
         });
-
-        ;
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
