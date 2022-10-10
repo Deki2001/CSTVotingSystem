@@ -6,9 +6,13 @@
         <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_adminpage.xml" value="0.17916666666666667" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_boys_vote.xml" value="0.17916666666666667" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_candidate_list.xml" value="0.17916666666666667" />
+        <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_details.xml" value="0.17864583333333334" />
+        <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_girls_vote.xml" value="0.1796875" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_register_candidate.xml" value="0.1" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_registration.xml" value="0.1796875" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_user_page.xml" value="0.17916666666666667" />
+        <entry key="..\:/CSTVoting/app/src/main/res/layout/activity_view_candidates.xml" value="0.1796875" />
+        <entry key="..\:/CSTVoting/app/src/main/res/layout/toolbar.xml" value="0.1796875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/drawable/backgroung_design.xml" value="0.1755" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/drawable/card.xml" value="0.1465" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/drawable/edit_text.xml" value="0.1" />

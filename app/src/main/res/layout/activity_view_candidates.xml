@@ -8,14 +8,34 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/candidatesrecyclerView"
-        android:layout_marginTop="55dp"
-        android:scrollbars="vertical"
-        style="@style/recyclearView"
-        android:background="@color/blue"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/myDataLoader"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:indeterminateBehavior="cycle"
+                android:visibility="gone"
+            >
+
+            </ProgressBar>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/candidatesrecyclerView"
+            android:layout_marginTop="55dp"
+            android:scrollbars="vertical"
+            style="@style/recyclearView"
+            android:background="@color/blue"/>
+
+
+    </ScrollView>
+
 
 
 </FrameLayout>
