@@ -17,6 +17,9 @@
         android:theme="@style/Theme.CSTVotingSystem"
         tools:targetApi="31">
         <activity
+            android:name=".AboutPage"
+            android:exported="false" />
+        <activity
             android:name=".ViewCandidates"
             android:exported="false" />
         <activity

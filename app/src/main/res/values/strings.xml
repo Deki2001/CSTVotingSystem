@@ -29,14 +29,12 @@
     <string name="chief_councillor">Chief Councillor</string>
     <string name="dupety_chief_councillor">Dupety Chief Councillor</string>
     <string name="hostel_councillor">Hostel Councillor</string>
-    <string name="title">TSHOGYEN</string>
-    <string name="aboutapp">Tshogyen is a mobile voting application for the CST councillors voting.
-    With the help of this application, the students and teachers can vote for their respective candidate.
+    <string name="title">CST Voting System</string>
+    <string name="about_app"><b>About App</b>:\n\nCST Voting System is a mobile voting \napplication for the CST councillors voting.
+    With the help of this app, the students and the staffs can vote for their respective candidate.
     Only the staffs and students of CST can register and use this app . After logging into this application,
-    the voter can view candidates, view their manifesto videos through a given link, view the result and
-        log out of the application. The voting feature will be only available for an hour on a particular
-        date. After logging into the app, the voter will automatically be logged out of the app
-        if no action is performed by them. Every vote counts.
+    the voter can view candidates, view their manifesto and view the result and also log out of the application.
+        Every vote counts.
 
     </string>
     <string name="vote">Vote</string>
