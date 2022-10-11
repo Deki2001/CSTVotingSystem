@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,8 +27,12 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Registration extends AppCompatActivity { //sgg
@@ -40,6 +45,7 @@ public class Registration extends AppCompatActivity { //sgg
     RadioGroup genderbtn;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
     private static final  String TAG = "Registration";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +149,7 @@ public class Registration extends AppCompatActivity { //sgg
 
     private void registerUser(String user_id, String user_name,String text_gender, String user_email, String user_password) {
        fAuth = FirebaseAuth.getInstance();
+       fStore = FirebaseFirestore.getInstance();
 
        //Create User Profile
         fAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
@@ -180,9 +187,37 @@ public class Registration extends AppCompatActivity { //sgg
                                         startActivity( intent);
                                         finish();*/
 
+                                        DocumentReference documentReference = fStore.collection("Users").document(fuser.getUid());
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("UserID", user_id);
+                                        user.put("FullName", user_name);
+                                        user.put("UserEmail", user_email);
+                                        //specify if the user is Admin
+                                        user.put("isUser","0");
+
+                                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Log.d("TAG", "onSuccess: user Profile is created");
+
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("TAG", "onFailure: " + e.toString());
+                                            }
+                                        });
+
 
                                     }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
+                                    }
                                 });
+
+
                             }
                             else{
                                 Toast.makeText(Registration.this, "User Registration Failed. Please Try Again", Toast.LENGTH_SHORT).show();

@@ -1,14 +1,10 @@
 package com.example.cstvotingsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -17,76 +13,55 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
-
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
-
     private static final Pattern EMAIL_ADDRESS = Pattern.compile("^[0-9]+\\.cst@rub\\.edu\\.bt",Pattern.CASE_INSENSITIVE);
     EditText email,password;
     private CheckBox showpassword;
     Button loginBtn;
+    TextView forgotPass, registerLink;
     boolean valid = true;
     FirebaseAuth fAuth;
-    ImageView logo;
+    FirebaseFirestore fStore;
+    ProgressDialog pd;
     FirebaseUser firebaseUser;
-    TextView registerLink,forgotPass,loginText;
-    ProgressBar progressBar;
-    TextView loginword;
-    private static final String TAG = "Login";
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        //show password
         showpassword =findViewById(R.id.showpassword);
 
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+
+        pd = new ProgressDialog(this);
+
         email = findViewById(R.id.loginID);
-        loginword = findViewById(R.id.login);
         password = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.gotoLogin);
-        forgotPass = findViewById(R.id.forgotPassword);
         registerLink = findViewById(R.id.register_text);
-        progressBar = findViewById(R.id.progressbar);
-        loginText =  findViewById(R.id.login);
-        logo = findViewById(R.id.logo);
-
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), UserPage.class));
-
-            }
-        });
-
-
-        loginword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), adminpage.class));
-
-            }
-        });
-
-
+        forgotPass = findViewById(R.id.forgotPassword);
+        //showpassword
         showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -97,13 +72,14 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    startActivity(new Intent(getApplicationContext(), Registration.class));
+                startActivity(new Intent(getApplicationContext(), Registration.class));
+            }
+        });
 
-                }
-            });
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,64 +120,122 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        fAuth = FirebaseAuth.getInstance();
-
-        // login User
         loginBtn.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
-            public void onClick(View view) {
-                String textEmail = email.getText().toString();
-                String textPass = password.getText().toString();
-
-                if (TextUtils.isEmpty(textEmail)) {
-                    email.setError("Email is required");
-                    email.requestFocus();
+            public void onClick(View v) {
+                if (!validateEmail()) {
+                    return;
                 }
-                else if (!EMAIL_ADDRESS.matcher(textEmail).matches()) {
-                    // Toast.makeText(Registration.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
-                    email.setError("Please enter a valid email address");
+                checkField(email);
+                checkField(password);
+                Log.d("TAG", "onClick: " + email.getText().toString());
 
-                    email.requestFocus();
-                }else if (TextUtils.isEmpty(textPass)) {
-                    password.setError("Password is Required.");
-                    password.requestFocus();
-                }else{
-                    progressBar.setVisibility(View.VISIBLE);
-                    LoginUser(textEmail, textPass);
+                pd.setTitle("Logging in...");
+                pd.show();
+
+                if(valid) {
+                    fAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            checkUserAccessLevel(authResult.getUser().getUid());
+                            if (fAuth.getCurrentUser().isEmailVerified()) {
+                                pd.dismiss();
+                                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                checkUserAccessLevel(authResult.getUser().getUid());
+                            }
+                            else {
+                                pd.dismiss();
+                                Toast.makeText(Login.this, "Please Verify Your Email To Login.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
+                            Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
-
     }
 
-    private void LoginUser(String textEmail, String textPass) {
-        fAuth.signInWithEmailAndPassword(textEmail, textPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    private void checkUserAccessLevel(String uid) {
+        DocumentReference df = fStore.collection("Users").document(uid);
+        //extract the data from the document
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                } else {
-                    try {
-                        throw task.getException();
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("TAG", "onSuccess: " + documentSnapshot.getData());
+                //identify the user access level
+                if (documentSnapshot.getString("isAdmin") != null) {
+                    //user is admin
+                    startActivity(new Intent(getApplicationContext(),adminpage.class));
+                    finish();
+                }
+
+                if (documentSnapshot.getString( "isUser") != null) {
+                    startActivity(new Intent(getApplicationContext(),UserPage.class));
+                    finish();
+                }
+            }
+        });
+    }
+
+    private boolean validateEmail() {
+        String emailInput = email.getText().toString().trim();
+
+        if (emailInput.isEmpty()) {
+            email.setError("Field can't be empty");
+            return false;
+        } /*else if (!EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            email.setError("Please enter a valid email address");
+            return false;
+        }*/
+        else {
+            email.setError(null);
+            return true;
+        }
+    }
+
+    public boolean checkField(EditText textField){
+        if(textField.getText().toString().isEmpty()){
+            textField.setError("Error");
+            valid = false;
+        }else {
+            valid = true;
+        }
+
+        return valid;
+    }
 
 
-                        //  Toast.makeText(Login.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+   /* protected void onStart() {
+        super.onStart();
+        firebaseUser = fAuth.getCurrentUser();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null && firebaseUser.isEmailVerified()){
+            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.getString("isAdmin") != null) {
+                        startActivity(new Intent(getApplicationContext(), adminpage.class));
+                        finish();
+                    }
 
-                    } catch (FirebaseAuthInvalidUserException e) {
-                        email.setError("User does not exits or is no longer valid register again");
-                        email.requestFocus();
-                    } catch (FirebaseAuthInvalidCredentialsException e) {
-                        email.setError("Invalid Credintial. Kindly, Check and re-enter");
-                        email.requestFocus();
-                    } catch (Exception e) {
-                        Log.e(TAG, e.getMessage());
+                    if (documentSnapshot.getString("isUser") != null) {
+                        startActivity(new Intent(getApplicationContext(), UserPage.class));
+                        finish();
                     }
                 }
-                progressBar.setVisibility(View.GONE);
-            }
-        });
-    }
-    }
-
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(), Login.class));
+                    finish();
+                }
+            });
+        }
+    }*/
+}
