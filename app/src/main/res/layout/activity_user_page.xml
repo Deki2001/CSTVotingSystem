@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserPage">
+    tools:context=".UserPage"
+    tools:ignore="InvalidId">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            />
 
         <Button
             android:id="@+id/CCvote"
@@ -54,8 +55,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vote" />
 
-
-
         <TextView
             android:id="@+id/verifyTextUser"
             android:layout_width="0dp"
@@ -67,7 +66,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
-
 
         <ImageView
             android:id="@+id/imageView"
@@ -82,6 +80,5 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/vote1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>
