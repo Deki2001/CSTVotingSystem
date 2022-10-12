@@ -28,6 +28,9 @@ import java.util.HashMap;
 
 public class Register_Candidate extends AppCompatActivity {
 
+    // register candidates
+
+
 
      EditText Mid, Mname, Memail, Mrole;
      Button viewList, register;
