@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
@@ -43,7 +44,9 @@ public class ViewCandidates extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db = FirebaseDatabase.getInstance();
-        root = db.getReference().child("Students");
+          //root = db.getReference().child("Students");
+
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()
@@ -60,7 +63,7 @@ public class ViewCandidates extends AppCompatActivity {
         recyclerView.setAdapter(candidateAdapter);
 
 
-        root.addChildEventListener(new ChildEventListener() {
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
                 CandidateModel candidateModel = snapshot.getValue(CandidateModel.class);
