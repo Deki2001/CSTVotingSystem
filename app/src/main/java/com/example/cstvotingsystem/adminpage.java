@@ -54,9 +54,6 @@ public class adminpage extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
         }
-        if(item.getItemId() == R.id.resetPassword){
-            startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
-        }
         if(item.getItemId() == R.id.user_profile){
             startActivity(new Intent(getApplicationContext(), UserProfile.class));
         }

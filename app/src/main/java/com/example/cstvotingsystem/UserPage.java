@@ -2,6 +2,7 @@ package com.example.cstvotingsystem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +18,15 @@ public class UserPage extends AppCompatActivity {
 
     Button vote, result;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_page);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         vote = findViewById(R.id.vote);
         result = findViewById(R.id.result);
@@ -68,10 +74,5 @@ public class UserPage extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
-        }
-
-
-        public void gotocandidate (View view){
-            startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
         }
     }

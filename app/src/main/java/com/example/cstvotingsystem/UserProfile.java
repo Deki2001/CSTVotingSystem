@@ -54,9 +54,6 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
-    public void reset_password(View view){
-        startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,9 +75,6 @@ public class UserProfile extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
-        }
-        if(item.getItemId() == R.id.resetPassword){
-            startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
         }
         if(item.getItemId() == R.id.user_profile){
             startActivity(new Intent(getApplicationContext(), UserProfile.class));
