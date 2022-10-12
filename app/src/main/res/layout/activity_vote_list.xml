@@ -35,10 +35,10 @@
 
         <TextView
             android:id="@+id/t1"
+            style="@style/cardText"
             android:layout_below="@+id/image_voteView"
             android:layout_marginTop="0dp"
-            android:text="Candidate Name"
-            style="@style/cardText" />
+            android:text="Candidate Name" />
 
         <TextView
             android:id="@+id/t4"

@@ -74,6 +74,7 @@ public class CandidateRegisterAdapter extends RecyclerView.Adapter<CandidateRegi
 
     @Override
     public int getItemCount() {
+
         return candidateModelList.size();
     }
 

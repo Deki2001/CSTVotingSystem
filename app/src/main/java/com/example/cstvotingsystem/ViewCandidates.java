@@ -44,9 +44,9 @@ public class ViewCandidates extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db = FirebaseDatabase.getInstance();
-          //root = db.getReference().child("Students");
+        root = db.getReference().child("Students");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief councillor");
+       // Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()
@@ -63,7 +63,7 @@ public class ViewCandidates extends AppCompatActivity {
         recyclerView.setAdapter(candidateAdapter);
 
 
-        query.addChildEventListener(new ChildEventListener() {
+        root.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
                 CandidateModel candidateModel = snapshot.getValue(CandidateModel.class);

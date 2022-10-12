@@ -9,6 +9,7 @@ public class CandidateModel {
     String Name;
     String Role;
     String Image;
+    String VName, VImage, VId;
 
     public CandidateModel(String id, String email, String name, String role, String image) {
         Id = id;
