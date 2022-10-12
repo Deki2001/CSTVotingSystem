@@ -9,9 +9,5 @@ public class ReadWriteUserDetails {
         this.gender = text_gender;
         this.useremail = user_email;
         this.userpassword = user_password;
-
-
-
-
     }
 }
