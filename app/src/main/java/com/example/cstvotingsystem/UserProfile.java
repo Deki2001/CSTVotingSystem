@@ -1,10 +1,5 @@
 package com.example.cstvotingsystem;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +7,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -54,6 +54,9 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
+    public void reset_password(View view){
+        startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -75,6 +78,9 @@ public class UserProfile extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
+        }
+        if(item.getItemId() == R.id.resetPassword){
+            startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
         }
         if(item.getItemId() == R.id.user_profile){
             startActivity(new Intent(getApplicationContext(), UserProfile.class));

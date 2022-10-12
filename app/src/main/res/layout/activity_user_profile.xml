@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email_txt"
-            android:background="@drawable/bluebtn"
+            android:background="@color/purple_500"
             style="@style/button"/>
 
         <include
@@ -130,6 +130,5 @@
             app:layout_constraintTop_toBottomOf="@+id/yourProfile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>
