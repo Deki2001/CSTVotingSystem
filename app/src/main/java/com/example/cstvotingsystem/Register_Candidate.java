@@ -29,12 +29,12 @@ import java.util.HashMap;
 public class Register_Candidate extends AppCompatActivity {
 
 
-    private EditText Mid, Mname, Memail, Mrole;
-    private Button viewList, register;
-    private ImageButton imageButton;
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference root = db.getReference().child("Students");
-    private FirebaseStorage mStroage = FirebaseStorage.getInstance();
+     EditText Mid, Mname, Memail, Mrole;
+     Button viewList, register;
+     ImageButton imageButton;
+     FirebaseDatabase db = FirebaseDatabase.getInstance();
+     DatabaseReference root = db.getReference().child("Students");
+     FirebaseStorage mStroage = FirebaseStorage.getInstance();
     private static final int Gallery_Code = 1;
     Uri image = null;
 
@@ -100,6 +100,11 @@ public class Register_Candidate extends AppCompatActivity {
                                  newPost.child("Image").setValue(task.getResult().toString());
                                  progressDialog.dismiss();
 
+                                 Intent intent = new Intent(Register_Candidate.this,ViewCandidates.class);
+                                 startActivity(intent);
+
+
+
                              }
                          });
 
@@ -133,8 +138,8 @@ public class Register_Candidate extends AppCompatActivity {
 
 
 
-    public void viewList(View view) {
-        startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
-
-    }
+//    public void viewList(View view) {
+//        startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
+//
+//    }
 }
