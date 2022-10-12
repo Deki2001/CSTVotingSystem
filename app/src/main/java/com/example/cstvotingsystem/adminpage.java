@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class adminpage extends AppCompatActivity {
     Button registerCandidate, viewCandidate ;
     @Override
@@ -32,7 +34,7 @@ public class adminpage extends AppCompatActivity {
             }
         });
 
-        registerCandidate.setOnClickListener(new View.OnClickListener() {
+       registerCandidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Register_Candidate.class));

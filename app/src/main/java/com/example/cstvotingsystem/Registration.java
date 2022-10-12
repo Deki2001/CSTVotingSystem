@@ -1,9 +1,5 @@
 package com.example.cstvotingsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -43,6 +41,7 @@ public class Registration extends AppCompatActivity { //sgg
     EditText userid, userName, userEmail, userPassword, confirmPassword;
     Button userregister_Btn;
     RadioGroup genderbtn;
+    RadioButton gender;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -82,7 +81,12 @@ public class Registration extends AppCompatActivity { //sgg
                 String user_password = userPassword.getText().toString();
                 String confirm_password = confirmPassword.getText().toString();
                 String user_Name = userName.getText().toString();
-                String textGender = null;
+
+                int genderselected = genderbtn.getCheckedRadioButtonId();
+                gender = findViewById(genderselected);
+                String  textGender = gender.getText().toString();
+
+
 
 
 
@@ -137,6 +141,7 @@ public class Registration extends AppCompatActivity { //sgg
                 }
                 else {
 
+
                     progressBar.setVisibility(View.VISIBLE);
                     registerUser(user_id, user_Name,textGender,user_email,user_password);  // user
                 }
@@ -147,7 +152,7 @@ public class Registration extends AppCompatActivity { //sgg
 
     }
 
-    private void registerUser(String user_id, String user_name,String text_gender, String user_email, String user_password) {
+    private void registerUser(String user_id, String user_name,String textGender, String user_email, String user_password) {
        fAuth = FirebaseAuth.getInstance();
        fStore = FirebaseFirestore.getInstance();
 
@@ -160,7 +165,7 @@ public class Registration extends AppCompatActivity { //sgg
                     FirebaseUser fuser = fAuth.getCurrentUser();
 
                     //Enter User data into the real time database
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(user_id,user_name,text_gender,user_email,user_password);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(user_id,user_name,textGender,user_email,user_password);
 
                     //Extracting User reference from Database for "Registered User"
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered User");
@@ -181,6 +186,7 @@ public class Registration extends AppCompatActivity { //sgg
                                         userEmail.setText("");
                                         userPassword.setText("");
                                         confirmPassword.setText("");
+                                        genderbtn.clearCheck();
                                         progressBar.setVisibility(View.GONE);
                                        /*Intent intent = new Intent(Registration.this, UserPage.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -192,6 +198,7 @@ public class Registration extends AppCompatActivity { //sgg
                                         user.put("UserID", user_id);
                                         user.put("FullName", user_name);
                                         user.put("UserEmail", user_email);
+                                        user.put("Gender", textGender);
                                         //specify if the user is Admin
                                         user.put("isUser","0");
 
