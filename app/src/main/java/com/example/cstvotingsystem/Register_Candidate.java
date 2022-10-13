@@ -28,25 +28,24 @@ import java.util.HashMap;
 
 public class Register_Candidate extends AppCompatActivity {
     // register candidates
-     EditText Mid, Mname, Memail, Mrole;
-     Button viewList, register;
-     ImageButton imageButton;
-     FirebaseDatabase db = FirebaseDatabase.getInstance();
-     DatabaseReference root = db.getReference().child("Students");
-     FirebaseStorage mStroage = FirebaseStorage.getInstance();
+    EditText Mid, Mname, Memail, Mrole;
+    Button viewList, register;
+    ImageButton imageButton;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference root = db.getReference().child("Students");
+    FirebaseStorage mStroage = FirebaseStorage.getInstance();
     private static final int Gallery_Code = 1;
     Uri image = null;
 
     ProgressDialog progressDialog;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_candidate);
-        viewList = findViewById(R.id.show_list);
 
+        viewList = findViewById(R.id.show_list);
         imageButton = findViewById(R.id.imageButton);
         Mid = findViewById(R.id.user_id);
         Mname = findViewById(R.id.user_fullname);
@@ -55,12 +54,20 @@ public class Register_Candidate extends AppCompatActivity {
         register = findViewById(R.id.register_btn);
         progressDialog = new ProgressDialog(this);
 
+        viewList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), UpdateCandidateView.class));
+
+            }
+        });
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
-                startActivityForResult(intent,Gallery_Code);
+                startActivityForResult(intent, Gallery_Code);
             }
         });
 
@@ -73,7 +80,7 @@ public class Register_Candidate extends AppCompatActivity {
                 String email = Memail.getText().toString().trim();
                 String role = Mrole.getText().toString().trim();
 
-                if(!(id.isEmpty() && name.isEmpty() && email.isEmpty() && role.isEmpty() && image != null)){
+                if (!(id.isEmpty() && name.isEmpty() && email.isEmpty() && role.isEmpty() && image != null)) {
 
 
                     progressDialog.setTitle("uploading...");
@@ -84,28 +91,27 @@ public class Register_Candidate extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                         Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                             @Override
-                             public void onComplete(@NonNull Task<Uri> task) {
+                            Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
 
-                                 String t = task.getResult().toString();
+                                    String t = task.getResult().toString();
 
-                                 DatabaseReference newPost = root.push();
+                                    DatabaseReference newPost = root.push();
 
-                                 newPost.child("Id").setValue(id);
-                                 newPost.child("Name").setValue(name);
-                                 newPost.child("Email").setValue(email);
-                                 newPost.child("Role").setValue(role);
-                                 newPost.child("Image").setValue(task.getResult().toString());
-                                 progressDialog.dismiss();
+                                    newPost.child("Id").setValue(id);
+                                    newPost.child("Name").setValue(name);
+                                    newPost.child("Email").setValue(email);
+                                    newPost.child("Role").setValue(role);
+                                    newPost.child("Image").setValue(task.getResult().toString());
+                                    progressDialog.dismiss();
 
-                                 Intent intent = new Intent(Register_Candidate.this,ViewCandidates.class);
-                                 startActivity(intent);
+                                    Intent intent = new Intent(Register_Candidate.this, ViewCandidates.class);
+                                   startActivity(intent);
 
 
-
-                             }
-                         });
+                                }
+                            });
 
                         }
                     });
@@ -120,13 +126,14 @@ public class Register_Candidate extends AppCompatActivity {
 //                root.setValue(userMap);
             }
         });
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==Gallery_Code && resultCode==RESULT_OK){
+        if (requestCode == Gallery_Code && resultCode == RESULT_OK) {
 
             image = data.getData();
             imageButton.setImageURI(image);
@@ -134,11 +141,7 @@ public class Register_Candidate extends AppCompatActivity {
 
 
     }
-
-
-
-//    public void viewList(View view) {
-//        startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
-//
-//    }
 }
+
+
+

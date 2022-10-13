@@ -17,6 +17,9 @@
         android:theme="@style/Theme.CSTVotingSystem"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateCandidateView"
+            android:exported="false" />
+        <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
         <activity
@@ -34,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".CandidateBigViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateCandidateActivity"
             android:exported="false" />
         <activity
             android:name=".ViewCandidates"

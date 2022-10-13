@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class adminpage extends AppCompatActivity {
     Button registerCandidate, viewCandidate ;
@@ -23,10 +22,6 @@ public class adminpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminpage);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         registerCandidate = findViewById(R.id.register_candidate);
         viewCandidate = findViewById(R.id.viewCandidates);
@@ -75,10 +70,14 @@ public class adminpage extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), Register_Candidate.class));
     }
 
+
     public void logout(View view){
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), Login.class));
         finish();
     }
 
+    public void viewCandidates(View view){
+        startActivity(new Intent(getApplicationContext(), UpdateCandidateActivity.class));
+    }
 }
