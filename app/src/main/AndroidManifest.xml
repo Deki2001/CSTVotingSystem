@@ -20,6 +20,12 @@
             android:name=".CandidateBigViewActivity"
             android:exported="false" />
         <activity
+            android:name=".UpdateCandidateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutPage"
             android:exported="false" />
         <activity

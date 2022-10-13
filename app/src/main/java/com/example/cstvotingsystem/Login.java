@@ -33,8 +33,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
-    private static final Pattern EMAIL_ADDRESS = Pattern.compile("^[0-9]+\\.cst@rub\\.edu\\.bt",Pattern.CASE_INSENSITIVE);
-    EditText email,password;
+    private static final Pattern EMAIL_ADDRESS = Pattern.compile("^[0-9]+\\.cst@rub\\.edu\\.bt", Pattern.CASE_INSENSITIVE);
+    EditText email, password;
     private CheckBox showpassword;
     Button loginBtn;
     TextView forgotPass, registerLink;
@@ -43,13 +43,14 @@ public class Login extends AppCompatActivity {
     FirebaseFirestore fStore;
     ProgressDialog pd;
     FirebaseUser firebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
         //show password
-        showpassword =findViewById(R.id.showpassword);
+        showpassword = findViewById(R.id.showpassword);
 
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -65,9 +66,9 @@ public class Login extends AppCompatActivity {
         showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else {
+                } else {
                     password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
@@ -133,8 +134,8 @@ public class Login extends AppCompatActivity {
                 pd.setTitle("Logging in...");
                 pd.show();
 
-                if(valid) {
-                    fAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                if (valid) {
+                    fAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
                             checkUserAccessLevel(authResult.getUser().getUid());
@@ -142,8 +143,7 @@ public class Login extends AppCompatActivity {
                                 pd.dismiss();
                                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 checkUserAccessLevel(authResult.getUser().getUid());
-                            }
-                            else {
+                            } else {
                                 pd.dismiss();
                                 Toast.makeText(Login.this, "Please Verify Your Email To Login.", Toast.LENGTH_SHORT).show();
                             }
@@ -170,12 +170,12 @@ public class Login extends AppCompatActivity {
                 //identify the user access level
                 if (documentSnapshot.getString("isAdmin") != null) {
                     //user is admin
-                    startActivity(new Intent(getApplicationContext(),adminpage.class));
+                    startActivity(new Intent(getApplicationContext(), adminpage.class));
                     finish();
                 }
 
-                if (documentSnapshot.getString( "isUser") != null) {
-                    startActivity(new Intent(getApplicationContext(),UserPage.class));
+                if (documentSnapshot.getString("isUser") != null) {
+                    startActivity(new Intent(getApplicationContext(), UserPage.class));
                     finish();
                 }
             }
@@ -191,51 +191,21 @@ public class Login extends AppCompatActivity {
         } /*else if (!EMAIL_ADDRESS.matcher(emailInput).matches()) {
             email.setError("Please enter a valid email address");
             return false;
-        }*/
-        else {
+        }*/ else {
             email.setError(null);
             return true;
         }
     }
 
-    public boolean checkField(EditText textField){
-        if(textField.getText().toString().isEmpty()){
+    public boolean checkField(EditText textField) {
+        if (textField.getText().toString().isEmpty()) {
             textField.setError("Error");
             valid = false;
-        }else {
+        } else {
             valid = true;
         }
 
         return valid;
     }
-
-
-   /* protected void onStart() {
-        super.onStart();
-        firebaseUser = fAuth.getCurrentUser();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null && firebaseUser.isEmailVerified()){
-            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if (documentSnapshot.getString("isAdmin") != null) {
-                        startActivity(new Intent(getApplicationContext(), adminpage.class));
-                        finish();
-                    }
-
-                    if (documentSnapshot.getString("isUser") != null) {
-                        startActivity(new Intent(getApplicationContext(), UserPage.class));
-                        finish();
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(getApplicationContext(), Login.class));
-                    finish();
-                }
-            });
-        }
-    }*/
 }
+

@@ -22,7 +22,7 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="172dp"
             android:layout_marginEnd="70dp"
-            android:background="@drawable/yellowbtn"
+            android:background="@drawable/bluebtn"
             android:onClick="ccVote"
             android:text="@string/chief_councillor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/CCvote"
-            android:background="@drawable/yellowbtn"/>
+            android:background="@drawable/bluebtn"/>
 
         <Button
             android:id="@+id/Boysvote"
@@ -62,7 +62,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Girlsvote"
-            android:background="@drawable/yellowbtn"/>
+            android:background="@drawable/bluebtn"/>
 
 
 
