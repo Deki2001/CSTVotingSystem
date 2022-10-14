@@ -112,21 +112,6 @@
         <!--        app:layout_constraintStart_toStartOf="parent"-->
         <!--        app:layout_constraintTop_toBottomOf="@+id/user_email" />-->
 
-         <EditText
-            android:id="@+id/candidate_role"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="60dp"
-            android:digits=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:hint="Enter Candidate Role"
-            android:inputType="text"
-            android:background="@drawable/edit_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.568"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_email"
-            style="@style/editText"/>
 
         <!--        <AutoCompleteTextView-->
         <!--            android:id="@+id/candidate_role"-->
@@ -149,38 +134,63 @@
         <!--            app:layout_constraintStart_toStartOf="parent"-->
         <!--            app:layout_constraintTop_toBottomOf="@+id/user_email" />-->
 
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="299dp"
+            android:layout_height="43dp"
+            android:background="@drawable/edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.69"
+            tools:ignore="MissingConstraints" />
 
-
+        <EditText
+            android:id="@+id/candidate_role"
+            style="@style/editText"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="60dp"
+            android:background="@drawable/edit_text"
+            android:digits=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:hint="Enter Candidate Role"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_email" />
 
         <Button
             android:id="@+id/register_btn"
+            style="@style/button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="125dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="125dp"
             android:background="@drawable/bluebtn"
             android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/candidate_role"
-            style="@style/button"/>
+            app:layout_constraintTop_toBottomOf="@+id/candidate_role" />
 
         <Button
             android:id="@+id/show_list"
+            style="@style/button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="125dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="125dp"
             android:background="@drawable/bluebtn"
             android:text="View List"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_btn"
-            style="@style/button"/>
+            app:layout_constraintTop_toBottomOf="@+id/register_btn" />
 
         <ProgressBar
             android:id="@+id/progress_Bar"
