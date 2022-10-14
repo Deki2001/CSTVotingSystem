@@ -10,21 +10,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <Button
             android:id="@+id/resetPassword"
             style="@style/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="48dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="100dp"
             android:background="@color/purple_500"
             android:onClick="reset_password"
             android:text="@string/reset_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.413"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email_txt" />
+
+        <Button
+            android:id="@+id/saveButton"
+            style="@style/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="100dp"
+            android:background="@color/purple_500"
+            android:onClick="save_btn"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resetPassword" />
 
         <include
             android:id="@+id/toolbar"
@@ -43,28 +60,37 @@
             style="@style/title"/>
 
         <TextView
+            android:id="@+id/add_profile"
+            android:layout_marginTop="24dp"
+            android:text="@string/your_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            style="@style/title"/>
+
+        <TextView
             android:id="@+id/fullName"
+            style="@style/profileText"
+            android:layout_width="232dp"
+            android:layout_height="24dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
             android:text="@string/full_name"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/name_txt"
-            app:layout_constraintTop_toTopOf="@+id/name_txt"
-            style="@style/profileText"/>
+            app:layout_constraintTop_toTopOf="@+id/name_txt" />
 
         <TextView
             android:id="@+id/Uid"
+            style="@style/profileText"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
             android:text="@string/user_id"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/id_txt"
-            app:layout_constraintTop_toTopOf="@+id/id_txt"
-            style="@style/profileText"/>
+            app:layout_constraintTop_toTopOf="@+id/id_txt" />
 
         <TextView
             android:id="@+id/name_txt"
@@ -88,7 +114,7 @@
             app:layout_constraintHorizontal_bias="0.079"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.629" />
+            app:layout_constraintVertical_bias="0.519" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -100,7 +126,7 @@
             app:layout_constraintHorizontal_bias="0.079"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.734" />
+            app:layout_constraintVertical_bias="0.618" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -112,14 +138,14 @@
             app:layout_constraintHorizontal_bias="0.079"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.847" />
+            app:layout_constraintVertical_bias="0.715" />
 
         <TextView
             android:id="@+id/id_txt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="88dp"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="40dp"
             android:text="@string/user_id"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -129,15 +155,16 @@
 
         <TextView
             android:id="@+id/email"
+            style="@style/profileText"
+            android:layout_width="257dp"
+            android:layout_height="27dp"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
             android:text="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/email_txt"
-            app:layout_constraintTop_toTopOf="@+id/email_txt"
-            style="@style/profileText"/>
+            app:layout_constraintTop_toTopOf="@+id/email_txt" />
 
         <TextView
             android:id="@+id/email_txt"
