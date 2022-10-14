@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
@@ -26,7 +29,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
-public class Register_Candidate extends AppCompatActivity {
+public class Register_Candidate extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // register candidates
     EditText Mid, Mname, Memail, Mrole;
     Button viewList, register;
@@ -36,7 +39,6 @@ public class Register_Candidate extends AppCompatActivity {
     FirebaseStorage mStroage = FirebaseStorage.getInstance();
     private static final int Gallery_Code = 1;
     Uri image = null;
-
     ProgressDialog progressDialog;
 
 
@@ -53,6 +55,13 @@ public class Register_Candidate extends AppCompatActivity {
         Mrole = findViewById(R.id.candidate_role);
         register = findViewById(R.id.register_btn);
         progressDialog = new ProgressDialog(this);
+
+        Spinner spinner = findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.dropdown,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
 
         viewList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +149,16 @@ public class Register_Candidate extends AppCompatActivity {
             imageButton.setImageURI(image);
         }
 
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String text = adapterView.getItemAtPosition(i).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
