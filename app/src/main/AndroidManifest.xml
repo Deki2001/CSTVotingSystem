@@ -26,6 +26,9 @@
             android:name=".UpdateManifestos"
             android:exported="false" />
         <activity
+            android:name=".UpdateCandidateView"
+            android:exported="false" />
+        <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
         <activity
@@ -43,9 +46,6 @@
             android:exported="false" />
         <activity
             android:name=".CandidateBigViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateCandidateActivity"
             android:exported="false" />
         <activity
             android:name=".ViewCandidates"
