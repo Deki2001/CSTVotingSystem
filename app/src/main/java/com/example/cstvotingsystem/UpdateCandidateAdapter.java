@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.orhanobut.dialogplus.DialogPlus;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,6 +47,13 @@ public class UpdateCandidateAdapter extends RecyclerView.Adapter<UpdateCandidate
         String image = null;
         image = candidateModel.getImage();
         Picasso.get().load(image).into(holder.imageView);
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+           //     final DialogPlus dialogPlus = DialogPlus.newDialog(holder.imageView.getContext()).
+            }
+        });
 
 
     }
