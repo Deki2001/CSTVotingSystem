@@ -77,6 +77,11 @@ public class adminpage extends AppCompatActivity {
         finish();
     }
 
+    public void viewManifesto(View view) {
+        startActivity(new Intent(getApplicationContext(), UpdateManifestos.class));
+
+    }
+
 //    public void viewCandidates(View view){
 //        startActivity(new Intent(getApplicationContext(), UpdateCandidateActivity.class));
 //    }
