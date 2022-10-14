@@ -15,7 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class adminpage extends AppCompatActivity {
-    Button registerCandidate, viewCandidate ;
+    Button registerCandidate, viewCandidate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class adminpage extends AppCompatActivity {
             }
         });
 
-       registerCandidate.setOnClickListener(new View.OnClickListener() {
+        registerCandidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Register_Candidate.class));
@@ -40,39 +41,44 @@ public class adminpage extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.logout){
+        if (item.getItemId() == R.id.logout) {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getApplicationContext(), Login.class));
             finish();
         }
-        if(item.getItemId() == R.id.user_profile){
+        if (item.getItemId() == R.id.user_profile) {
             startActivity(new Intent(getApplicationContext(), UserProfile.class));
         }
-        if(item.getItemId() == R.id.about){
+        if (item.getItemId() == R.id.about) {
             startActivity(new Intent(getApplicationContext(), AboutPage.class));
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void registerCandidates(View view){
+    public void registerCandidates(View view) {
         Toast.makeText(this, "Register Candidates", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(getApplicationContext(), Register_Candidate.class));
     }
 
 
-    public void logout(View view){
+    public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), Login.class));
         finish();
     }
 
+//    public void viewCandidates(View view){
+//        startActivity(new Intent(getApplicationContext(), UpdateCandidateActivity.class));
+//    }
+//}
 }

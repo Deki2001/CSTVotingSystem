@@ -49,5 +49,14 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string-array name="dropdown">
+        <item>Select Candidates role</item>
+        <item>Block councillor</item>
+        <item>Chief councillor</item>
+        <item>Games councillor</item>
+        <item>Cultural councillor</item>
+        <item>Councillor councillor</item>
+    </string-array>
+
 
 </resources>
