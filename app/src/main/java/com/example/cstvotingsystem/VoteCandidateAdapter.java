@@ -2,16 +2,27 @@ package com.example.cstvotingsystem;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,6 +31,8 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
     Context context;
     List<CandidateModel> candidateModelList;
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+    FieldValue increment = FieldValue.increment(1);
 
     public VoteCandidateAdapter(Context context, List<CandidateModel> candidateModelList) {
         this.context = context;
@@ -58,8 +71,13 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
         ImageView imageView;
         TextView id, name;
-        View v;
+        Button vote;
+        CandidateModel CurrentVote;
+        LayoutInflater inflater;
+        DocumentReference documentReference;
 
+
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief councillor");
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,10 +85,31 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
             imageView = itemView.findViewById(R.id.image_voteView);
             name = itemView.findViewById(R.id.t1);
             id = itemView.findViewById(R.id.t4);
-
+            vote = itemView.findViewById(R.id.voteButton);
             //For big candidate view
-
           //  v= itemView;
+            vote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Log.d("TAG", "onClick: Voted for Candidate " + CurrentVote.Name);
+                    documentReference = fStore.collection(CurrentVote.Role).document(CurrentVote.getId());
+                    documentReference.update("Vote", increment).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.d("TAG", "onComplete: Vote Success");
+                            Toast.makeText(inflater.getContext(), "Vote Successfully Counted.", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("TAG", "onFailure: Error!" + e.toString());
+                            Toast.makeText(inflater.getContext(), "Error !" + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+            });
 
         }
     }

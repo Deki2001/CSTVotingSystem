@@ -9,12 +9,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Spinner;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -24,12 +25,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.HashMap;
-
-public class Register_Candidate extends AppCompatActivity {
+public class Register_Candidate extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
     // register candidates
-    EditText Mid, Mname, Memail, Mrole;
+    EditText Mid, Mname, Memail;
+    CandidateModel member;
     Button viewList, register;
+    String item;
+    Spinner spinner;
     ImageButton imageButton;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference root = db.getReference().child("Students");
@@ -38,6 +40,7 @@ public class Register_Candidate extends AppCompatActivity {
     Uri image = null;
 
     ProgressDialog progressDialog;
+
 
 
     @Override
@@ -50,9 +53,18 @@ public class Register_Candidate extends AppCompatActivity {
         Mid = findViewById(R.id.user_id);
         Mname = findViewById(R.id.user_fullname);
         Memail = findViewById(R.id.user_email);
-        Mrole = findViewById(R.id.candidate_role);
+
+        member = new CandidateModel();
+
+     //   Mrole = findViewById(R.id.candidate_role);
+
         register = findViewById(R.id.register_btn);
         progressDialog = new ProgressDialog(this);
+
+         spinner = findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.dropdown,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         viewList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +90,7 @@ public class Register_Candidate extends AppCompatActivity {
                 String id = Mid.getText().toString().trim();
                 String name = Mname.getText().toString().trim();
                 String email = Memail.getText().toString().trim();
-                String role = Mrole.getText().toString().trim();
+                String role = item.trim();
 
                 if (!(id.isEmpty() && name.isEmpty() && email.isEmpty() && role.isEmpty() && image != null)) {
 
@@ -140,6 +152,18 @@ public class Register_Candidate extends AppCompatActivity {
             imageButton.setImageURI(image);
         }
 
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    item = spinner.getSelectedItem().toString();
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }

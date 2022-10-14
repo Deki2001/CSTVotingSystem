@@ -1,5 +1,7 @@
 package com.example.cstvotingsystem;
 
+import com.google.firebase.firestore.DocumentReference;
+
 public class CandidateModel {
 
 
@@ -10,6 +12,7 @@ public class CandidateModel {
     String Role;
     String Image;
     String VName, VImage, VId;
+
 
     public CandidateModel(String id, String email, String name, String role, String image) {
         Id = id;
