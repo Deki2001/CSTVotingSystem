@@ -13,34 +13,37 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class  UpdateCandidateView extends AppCompatActivity {
-
-    FirebaseDatabase db;
-    DatabaseReference root;
-    FirebaseStorage mStroage;
-    RecyclerView recyclerView;
-    UpdateCandidateAdapter candidateAdapter;
-    List<CandidateModel> candidateMdList;
+public class CultureCouncillorBoys extends AppCompatActivity {
 
 
-    //RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_candidate_view);
+        setContentView(R.layout.activity_culture_councillor_boys);
 
-        recyclerView = (RecyclerView)findViewById(R.id.updateCandidaterecyclerView);
+
+        FirebaseDatabase db;
+        DatabaseReference root;
+        FirebaseStorage mStroage;
+        RecyclerView recyclerView;
+        VoteCandidateAdapter Adapter;
+        List<CandidateModel> candidateMdList;
+
+
+        recyclerView = (RecyclerView)findViewById(R.id.CultureCouncillorBoysRecycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        db = FirebaseDatabase.getInstance();
-        root = db.getReference().child("Students");
 
-        // Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief councillor");
+        db = FirebaseDatabase.getInstance();
+        //root = db.getReference().child("Students");
+
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Culture Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()
@@ -48,21 +51,21 @@ public class  UpdateCandidateView extends AppCompatActivity {
 //                  .build();
 
         mStroage = FirebaseStorage.getInstance();
-        recyclerView = findViewById(R.id.updateCandidaterecyclerView);
+        recyclerView = findViewById(R.id.CultureCouncillorBoysRecycleview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         candidateMdList = new ArrayList<CandidateModel>();
-        candidateAdapter = new UpdateCandidateAdapter(UpdateCandidateView.this, candidateMdList);
-        recyclerView.setAdapter(candidateAdapter);
+        Adapter = new VoteCandidateAdapter(CultureCouncillorBoys.this, candidateMdList);
+        recyclerView.setAdapter(Adapter);
 
 
-        root.addChildEventListener(new ChildEventListener() {
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
                 CandidateModel candidateModel = snapshot.getValue(CandidateModel.class);
                 candidateMdList.add(candidateModel);
-                candidateAdapter.notifyDataSetChanged();
+                Adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -88,9 +91,6 @@ public class  UpdateCandidateView extends AppCompatActivity {
 
 
     }
-
-
-
 }
 
 
