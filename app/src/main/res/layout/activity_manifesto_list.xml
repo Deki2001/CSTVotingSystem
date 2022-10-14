@@ -15,7 +15,7 @@
     android:scrollbars="vertical"
     app:cardCornerRadius="21dp"
     app:cardUseCompatPadding="true"
-    tools:context=".CandidateList">
+    tools:context=".ManifestoList">
 
 
 
@@ -26,16 +26,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp">
 
+            <TextView
+                android:id="@+id/namemani"
+                style="@style/cardText"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Candidate Name"
+                android:textSize="17dp" />
+
             <ImageView
-                android:id="@+id/image_recycler_id"
-                android:layout_width="145dp"
-                android:layout_height="117dp"
+                android:id="@+id/manifesto_recycler_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:src="@drawable/profile_pic"
+                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -43,29 +52,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.583" />
 
-            <TextView
-                android:id="@+id/t1"
-                style="@style/cardText"
-                android:text="Candidate Name"
-                android:textSize="17dp" />
-
-            <TextView
-                android:id="@+id/t2"
-                style="@style/cardText"
-                android:layout_below="@+id/t1"
-                android:text="Candidate Email" />
-
-            <TextView
-                android:id="@+id/t3"
-                style="@style/cardText"
-                android:layout_below="@+id/t2"
-                android:text="Candidate ID" />
-
-            <TextView
-                android:id="@+id/t4"
-                style="@style/cardText"
-                android:layout_below="@+id/t3"
-                android:text="Candidate Role" />
         </LinearLayout>
     </FrameLayout>
 

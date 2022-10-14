@@ -40,7 +40,7 @@ public class UserPage extends AppCompatActivity {
     }
 
         public void candidate (View view){
-            startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
+            startActivity(new Intent(getApplicationContext(), ManifestoRecycleview .class));
 
         }
 
@@ -77,7 +77,7 @@ public class UserPage extends AppCompatActivity {
 
 
         public void gotocandidate (View view){
-            startActivity(new Intent(getApplicationContext(), ViewCandidates.class));
+            startActivity(new Intent(getApplicationContext(), ManifestoRecycleview.class));
         }
 
     public void Result(View view) {

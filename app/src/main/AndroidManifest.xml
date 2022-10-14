@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.cstvotingsystem">
+    package="com.example.cstvotingsystem" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,7 +15,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSTVotingSystem"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name=".CandidateList"
+            android:exported="false" />
+        <activity
+            android:name=".ManifestoRecycleview"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateManifestos"
+            android:exported="false" />
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
@@ -51,7 +60,7 @@
             android:name=".Vote"
             android:exported="false" />
         <activity
-            android:name=".CandidateList"
+            android:name=".ManifestoList"
             android:exported="false" />
         <activity
             android:name=".UserPage"
@@ -68,7 +77,7 @@
         <activity android:name=".AboutPage" />
         <activity
             android:name=".Login"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

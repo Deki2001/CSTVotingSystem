@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateManifestos">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/manifestButton"
+            android:layout_width="0dp"
+            android:layout_height="106dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="120dp"
+            android:layout_marginRight="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UpdateManifesto"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/UpdateManifesto"
+            style="@style/title"
+            android:layout_marginTop="24dp"
+            android:text="Update Manifestos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+
+        <EditText
+            android:id="@+id/fname"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="60dp"
+            android:digits=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            android:background="@drawable/edit_text"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:hint="Enter Full Name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/manifestButton"
+            style="@style/editText"/>
+
+        <!--    <Spinner-->
+        <!--        android:id="@+id/spinner"-->
+        <!--        android:layout_width="200dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginEnd="10dp"-->
+        <!--        android:layout_marginRight="10dp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.0"-->
+        <!--        app:layout_constraintStart_toEndOf="@+id/roleSpinner"-->
+        <!--        app:layout_constraintTop_toTopOf="@+id/roleSpinner" />-->
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/roleSpinner"-->
+        <!--        android:layout_width="0dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginStart="65dp"-->
+        <!--        android:layout_marginLeft="65dp"-->
+        <!--        android:layout_marginTop="24dp"-->
+        <!--        android:text="Candidate Role :"-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="16sp"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/user_email" />-->
+
+        <!--        <AutoCompleteTextView-->
+        <!--            android:id="@+id/candidate_role"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_marginStart="60dp"-->
+        <!--            android:layout_marginLeft="60dp"-->
+        <!--            android:layout_marginTop="24dp"-->
+        <!--            android:layout_marginEnd="60dp"-->
+        <!--            android:layout_marginRight="60dp"-->
+        <!--            android:background="@drawable/edit_text"-->
+        <!--            android:completionThreshold="1"-->
+        <!--            android:drawableLeft="@drawable/ic_baseline_person_24"-->
+        <!--            android:drawablePadding="10dp"-->
+        <!--            android:ems="13"-->
+        <!--            android:hint="Enter Candidate Role"-->
+        <!--            android:inputType="text"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.568"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/user_email" />-->
+
+        <Button
+            android:id="@+id/Add"
+            style="@style/button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="125dp"
+            android:background="@drawable/bluebtn"
+            android:text="Add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fname" />
+
+        <Button
+            android:id="@+id/viewManifest"
+            style="@style/button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="125dp"
+            android:background="@drawable/bluebtn"
+            android:text="View Manifesto"
+            android:onClick="viewManifesto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Add" />
+
+        <ProgressBar
+            android:id="@+id/progress_Bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="112dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_list" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

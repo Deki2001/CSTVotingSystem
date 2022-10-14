@@ -1,7 +1,6 @@
 package com.example.cstvotingsystem;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,7 @@ public class CandidateRegisterAdapter extends RecyclerView.Adapter<CandidateRegi
             @Override
             public void onClick(View view) {
 
-              //  Intent intent = new Intent(,CandidateBigViewActivity.class);
+                //  Intent intent = new Intent(,CandidateBigViewActivity.class);
 //                intent.putExtra("singleImage", candidateModel.getImage());
 //                intent.putExtra("Name", candidateModel.getName());
 //                intent.putExtra("ID", candidateModel.getId());
