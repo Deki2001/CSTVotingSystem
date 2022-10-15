@@ -47,7 +47,7 @@ public class BlockCouncillor_boys extends AppCompatActivity {
             db = FirebaseDatabase.getInstance();
             //root = db.getReference().child("Students");
 
-            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("BC");
+            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Boys Block Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()

@@ -43,7 +43,7 @@ public class CACBoysVote extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         //root = db.getReference().child("Students");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("CAC");
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Boys College Academy Committee");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()

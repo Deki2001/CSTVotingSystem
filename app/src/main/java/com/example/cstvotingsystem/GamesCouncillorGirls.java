@@ -43,7 +43,7 @@ public class GamesCouncillorGirls extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         //root = db.getReference().child("Students");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("GCFemale");
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Girls Game Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()

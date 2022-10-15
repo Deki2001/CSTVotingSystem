@@ -1,40 +1,46 @@
 package com.example.cstvotingsystem;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class Register_Candidate extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
+public class Register_Candidate extends AppCompatActivity{
     // register candidates
     EditText Mid, Mname, Memail;
     CandidateModel member;
     Button viewList, register;
-    String item;
-    Spinner spinner;
+   // String item;
+    private Spinner spinner;
     ImageButton imageButton;
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference root = db.getReference().child("Students");
+    FirebaseDatabase db = FirebaseDatabase.getInstance();//database
+    DatabaseReference root = db.getReference().child("Students");//reference
+
+    SpinnerDataSave spinnerDataSave;
+    int maxid = 0;
     FirebaseStorage mStroage = FirebaseStorage.getInstance();
     private static final int Gallery_Code = 1;
     Uri image = null;
@@ -53,12 +59,15 @@ public class Register_Candidate extends AppCompatActivity  implements AdapterVie
         Mid = findViewById(R.id.user_id);
         Mname = findViewById(R.id.user_fullname);
         Memail = findViewById(R.id.user_email);
+        spinner = findViewById(R.id.spinner1);
 
         member = new CandidateModel();
 
      //   Mrole = findViewById(R.id.candidate_role);
 
         register = findViewById(R.id.register_btn);
+        spinnerDataSave = new SpinnerDataSave();
+
         progressDialog = new ProgressDialog(this);
 
          spinner = findViewById(R.id.spinner1);
@@ -84,15 +93,35 @@ public class Register_Candidate extends AppCompatActivity  implements AdapterVie
         });
 
 
+
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    maxid = (int) snapshot.getChildrenCount();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String id = Mid.getText().toString().trim();
                 String name = Mname.getText().toString().trim();
                 String email = Memail.getText().toString().trim();
-                String role = item.trim();
+                // String role = item.trim();
+                String role = spinner.getSelectedItem().toString();
 
-                if (!(id.isEmpty() && name.isEmpty() && email.isEmpty() && role.isEmpty() && image != null)) {
+
+                Toast.makeText(Register_Candidate.this, "Value stored successfully", Toast.LENGTH_SHORT).show();
+
+                root.child(String.valueOf(maxid+1)).setValue(spinnerDataSave);
+
+                if (!(id.isEmpty() && name .isEmpty() && email.isEmpty() && image != null)) {
 
 
                     progressDialog.setTitle("uploading...");
@@ -120,7 +149,7 @@ public class Register_Candidate extends AppCompatActivity  implements AdapterVie
                                     progressDialog.dismiss();
 
                                     Intent intent = new Intent(Register_Candidate.this, ViewCandidates.class);
-                                   startActivity(intent);
+                                    startActivity(intent);
 
 
                                 }
@@ -139,7 +168,6 @@ public class Register_Candidate extends AppCompatActivity  implements AdapterVie
 //                root.setValue(userMap);
             }
         });
-
     }
 
     @Override
@@ -155,17 +183,17 @@ public class Register_Candidate extends AppCompatActivity  implements AdapterVie
 
     }
 
-    @Override
+   /* @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-    item = spinner.getSelectedItem().toString();
+   // item = spinner.getSelectedItem().toString();
 
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
-    }
+    }*/
 }
 
 

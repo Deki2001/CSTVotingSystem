@@ -43,7 +43,7 @@ public class CultureCouncillorBoys extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         //root = db.getReference().child("Students");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Culture Councillor");
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Boys Cultural Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()

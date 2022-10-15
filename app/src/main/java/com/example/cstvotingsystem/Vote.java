@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,7 +33,32 @@ public class Vote extends AppCompatActivity {
         Male_btn = findViewById(R.id.Boysvote);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Registered User").child("gender");
+        DatabaseReference myRef = database.getReference("Registered User");
+
+        myRef.child("gender").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                     if(task.getResult().exists()){
+                         DataSnapshot dataSnapshot = task.getResult();
+                         String gender = String.valueOf(dataSnapshot.child("gender").getValue());
+
+                         if(gender == "Female"){
+                             Male_btn.setEnabled(false);
+
+                         }
+
+                         else{
+                             Female_btn.setEnabled(false);
+
+
+                         }
+
+                     }
+
+                }
+            }
+        }) ;
 
         // Read from the database
        /* myRef.addValueEventListener(new ValueEventListener() {

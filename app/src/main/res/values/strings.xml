@@ -53,11 +53,17 @@
 
     <string-array name="dropdown">
         <item>Select Candidates role</item>
-        <item>Block councillor</item>
-        <item>Chief councillor</item>
-        <item>Games councillor</item>
-        <item>Cultural councillor</item>
-        <item>Councillor councillor</item>
+        <item>Chief Councillor</item>
+        <item>Girl Deputy Chief Councillor</item>
+        <item>Girls Block Councillor</item>
+        <item>Girls Game Councillor</item>
+        <item>Girls Cultural Councillor</item>
+        <item>Girls College Academy Committee</item>
+        <item>Boys Deputy Chief Councillor</item>
+        <item>Boys Block Councillor</item>
+        <item>Boys Game Councillor</item>
+        <item>Boys Cultural Councillor</item>
+        <item>Boys College Academy Committee</item>
     </string-array>
 
 

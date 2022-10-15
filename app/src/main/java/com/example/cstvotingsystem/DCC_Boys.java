@@ -43,7 +43,7 @@ public class DCC_Boys extends AppCompatActivity {
             db = FirebaseDatabase.getInstance();
             //root = db.getReference().child("Students");
 
-            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("DCC");
+            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Boys Deputy Chief Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()

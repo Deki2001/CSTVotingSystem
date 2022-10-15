@@ -1,38 +1,35 @@
 package com.example.cstvotingsystem;
 
 import android.content.Context;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdapter.ViewHolder> {
 
+    FirebaseDatabase database;
+    DatabaseReference reference;
+
+
+
     Context context;
     List<CandidateModel> candidateModelList;
-    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-    FieldValue increment = FieldValue.increment(1);
+   // FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+  //  FieldValue increment = FieldValue.increment(1);
+
 
     public VoteCandidateAdapter(Context context, List<CandidateModel> candidateModelList) {
         this.context = context;
@@ -77,7 +74,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
         DocumentReference documentReference;
 
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief councillor");
+       // Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief Councillor");
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +85,13 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
             vote = itemView.findViewById(R.id.voteButton);
             //For big candidate view
           //  v= itemView;
+
+         /*   vote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                   database = FirebaseDatabase.getInstance();
+                   reference = database.getReference();
+            });
             vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -109,7 +113,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                     });
 
                 }
-            });
+            });*/
 
         }
     }

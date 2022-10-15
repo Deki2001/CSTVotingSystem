@@ -24,7 +24,7 @@
             android:layout_marginTop="388dp"
             android:layout_marginEnd="70dp"
             android:onClick="candidate"
-            android:text="@string/candidates"
+            android:text="View Manifestos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
