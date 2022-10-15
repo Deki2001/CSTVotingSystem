@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -72,9 +74,11 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
         CandidateModel CurrentVote;
         LayoutInflater inflater;
         DocumentReference documentReference;
+        FirebaseUser user;
 
 
-       // Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief Councillor");
+
+        // Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief Councillor");
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,16 +87,53 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
             name = itemView.findViewById(R.id.t1);
             id = itemView.findViewById(R.id.t4);
             vote = itemView.findViewById(R.id.voteButton);
-            //For big candidate view
-          //  v= itemView;
 
-         /*   vote.setOnClickListener(new View.OnClickListener() {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String userId     = user.getUid();
+            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
+            //For big candidate view
+            //  v= itemView;
+            vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   database = FirebaseDatabase.getInstance();
-                   reference = database.getReference();
+//                    database = FirebaseDatabase.getInstance();
+//                    reference = database.getReference();
+
+
+
+                    mDatabaseReference.child("Students").child(userId).child("Vote");
+
+
+
+
+
+
+                    /*reference.runTransaction(new Transaction.Handler() {
+                        @NonNull
+                        @Override
+                        public Transaction.Result doTransaction(@NonNull MutableData currentData) {
+                            Integer score = currentData.getValue(Integer.class);
+                            if (score == null){
+                                return Transaction.success(currentData);
+                            }
+
+                            if ()
+                            return null;
+                        }
+
+                        @Override
+                        public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
+
+                        }
+
+                    });*/
+
+
+                }
             });
-            vote.setOnClickListener(new View.OnClickListener() {
+
+         /*   vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 

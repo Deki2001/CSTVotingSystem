@@ -1,8 +1,5 @@
 package com.example.cstvotingsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,9 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class adminpage extends AppCompatActivity {
     Button registerCandidate, viewCandidate ;
@@ -79,5 +77,10 @@ public class adminpage extends AppCompatActivity {
 
     public void viewCandidates(View view){
       //  startActivity(new Intent(getApplicationContext(), UpdateCandidateActivity.class));
+    }
+
+    public void viewManifesto(View view) {
+        startActivity(new Intent(getApplicationContext(), UpdateManifestos.class));
+
     }
 }

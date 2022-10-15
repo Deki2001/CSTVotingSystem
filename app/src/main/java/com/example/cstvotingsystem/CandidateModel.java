@@ -1,7 +1,5 @@
 package com.example.cstvotingsystem;
 
-import com.google.firebase.firestore.DocumentReference;
-
 public class CandidateModel {
 
 
@@ -11,15 +9,26 @@ public class CandidateModel {
     String Name;
     String Role;
     String Image;
+    int Vote;
     String VName, VImage, VId;
 
 
-    public CandidateModel(String id, String email, String name, String role, String image) {
+
+    public int getVote() {
+        return Vote;
+    }
+
+    public void setVote(int vote) {
+        Vote = vote;
+    }
+
+    public CandidateModel(String id, String email, String name, String role, String image, int vote) {
         Id = id;
         Email = email;
         Name = name;
         Role = role;
         Image = image;
+        Vote = vote;
     }
     public CandidateModel(){
 
