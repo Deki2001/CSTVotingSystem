@@ -1,6 +1,9 @@
 package com.example.cstvotingsystem;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.squareup.picasso.Picasso;
 
@@ -24,6 +31,8 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
     FirebaseDatabase database;
     DatabaseReference reference;
+    String vote_ID;
+    String current_key;
 
 
 
@@ -55,7 +64,6 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
         holder.id.setText("ID: " + candidateModel.getId());
        // holder.role.setText("Role: " + candidateModel.getRole());
 
-
         String image = null;
         image = candidateModel.getImage();
         Picasso.get().load(image).into(holder.imageView);
@@ -75,7 +83,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
         CandidateModel CurrentVote;
         LayoutInflater inflater;
         DocumentReference documentReference;
-        FirebaseUser user;
+       // FirebaseUser user;
 
 
 
@@ -90,80 +98,45 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
             vote = itemView.findViewById(R.id.voteButton);
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String userId     = user.getUid();
-            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Students");
+            String userId = user.getUid();
+            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+            int i=0;
 
             //For big candidate view
             //  v= itemView;
-          /*  vote.setOnClickListener(new View.OnClickListener() {
+            vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    database = FirebaseDatabase.getInstance();
-//                    reference = database.getReference();
-                     update = CurrentVote.getName();
-                    database.getReference()
-                            .child("Student")
-                            .child(FirebaseAuth.getInstance().)
-                            .updateChildren(update)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
 
-                                }
-                            })
-
-
-
-                    /*reference.runTransaction(new Transaction.Handler() {
-                        @NonNull
+                    DatabaseReference assetsRef = mDatabaseReference.child("Students");
+                    ValueEventListener valueEventListener = new ValueEventListener() {
                         @Override
-                        public Transaction.Result doTransaction(@NonNull MutableData currentData) {
-                            Integer score = currentData.getValue(Integer.class);
-                            if (score == null){
-                                return Transaction.success(currentData);
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                String key = ds.getKey();
+                                current_key = key;
+                                System.out.println(key);
+                                System.out.println(vote_ID);
+                                Log.d(TAG, key);
                             }
-
-                            if ()
-                            return null;
                         }
 
                         @Override
-                        public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
-
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Log.d(TAG, databaseError.getMessage()); //Don't ignore errors!
                         }
+                    };
 
-                    });
+                    assetsRef.addListenerForSingleValueEvent(valueEventListener);
 
-
+                    String text[]=id.getText().toString().split(":",2);
+                    System.out.println("..................."+text[1]);
+                    String str=text[1].trim();
+                    mDatabaseReference.child("Students").child(str).child("Vote").setValue(ServerValue.increment(1));
                 }
-            });*/
-
-         /*   vote.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Log.d("TAG", "onClick: Voted for Candidate " + CurrentVote.Name);
-                    documentReference = fStore.collection(CurrentVote.Role).document(CurrentVote.getId());
-                    documentReference.update("Vote", increment).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Log.d("TAG", "onComplete: Vote Success");
-                            Toast.makeText(inflater.getContext(), "Vote Successfully Counted.", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("TAG", "onFailure: Error!" + e.toString());
-                            Toast.makeText(inflater.getContext(), "Error !" + e.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                }
-            });*/
+            });
 
         }
     }
-
-
 
 }

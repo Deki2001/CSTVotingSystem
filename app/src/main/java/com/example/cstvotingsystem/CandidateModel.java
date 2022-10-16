@@ -10,7 +10,6 @@ public class CandidateModel {
     String Role;
     String Image;
     int Vote;
-    String VName, VImage, VId;
 
 
 
@@ -20,6 +19,7 @@ public class CandidateModel {
 
     public void setVote(int vote) {
         Vote = vote;
+
     }
 
     public CandidateModel(String id, String email, String name, String role, String image, int vote) {
@@ -33,6 +33,9 @@ public class CandidateModel {
     public CandidateModel(){
 
     }
+
+
+
 
     public String getId() {
         return Id;

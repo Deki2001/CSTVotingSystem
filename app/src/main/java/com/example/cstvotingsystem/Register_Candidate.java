@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,10 +32,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class Register_Candidate extends AppCompatActivity{
+    private  static final String TAG = "Register_Candidate";
     // register candidates
     EditText Mid, Mname, Memail;
     CandidateModel member;
     Button viewList, register;
+
    // String item;
     private Spinner spinner;
     ImageButton imageButton;
@@ -137,20 +142,19 @@ public class Register_Candidate extends AppCompatActivity{
                                 public void onComplete(@NonNull Task<Uri> task) {
 
                                     String t = task.getResult().toString();
+                                    String vid;
 
-                                    DatabaseReference newPost = root.push();
-
+                                    DatabaseReference newPost = root.child(id);
                                     newPost.child("Id").setValue(id);
                                     newPost.child("Name").setValue(name);
                                     newPost.child("Email").setValue(email);
                                     newPost.child("Role").setValue(role);
-                                    // newPost.child("Vote");
+                                     newPost.child("Vote").setValue(0);
                                     newPost.child("Image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
 
                                     Intent intent = new Intent(Register_Candidate.this, ViewCandidates.class);
                                     startActivity(intent);
-
 
                                 }
                             });
