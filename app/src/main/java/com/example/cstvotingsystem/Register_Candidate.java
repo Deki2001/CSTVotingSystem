@@ -144,7 +144,7 @@ public class Register_Candidate extends AppCompatActivity{
                                     newPost.child("Name").setValue(name);
                                     newPost.child("Email").setValue(email);
                                     newPost.child("Role").setValue(role);
-                                     newPost.child("Vote").setValue(0);
+                                    // newPost.child("Vote");
                                     newPost.child("Image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
 

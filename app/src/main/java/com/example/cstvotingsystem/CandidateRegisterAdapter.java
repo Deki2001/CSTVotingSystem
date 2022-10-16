@@ -42,6 +42,7 @@ public class CandidateRegisterAdapter extends RecyclerView.Adapter<CandidateRegi
         holder.id.setText("ID: " + candidateModel.getId());
         holder.role.setText("Role: " + candidateModel.getRole());
 
+
         String image = null;
         image = candidateModel.getImage();
         Picasso.get().load(image).into(holder.imageView);

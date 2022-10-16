@@ -55,6 +55,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
         holder.id.setText("ID: " + candidateModel.getId());
        // holder.role.setText("Role: " + candidateModel.getRole());
 
+
         String image = null;
         image = candidateModel.getImage();
         Picasso.get().load(image).into(holder.imageView);
@@ -90,22 +91,26 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String userId     = user.getUid();
-            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Students");
 
             //For big candidate view
             //  v= itemView;
-            vote.setOnClickListener(new View.OnClickListener() {
+          /*  vote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 //                    database = FirebaseDatabase.getInstance();
 //                    reference = database.getReference();
+                     update = CurrentVote.getName();
+                    database.getReference()
+                            .child("Student")
+                            .child(FirebaseAuth.getInstance().)
+                            .updateChildren(update)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
 
-
-
-                    mDatabaseReference.child("Students").child(userId).child("Vote");
-
-
-
+                                }
+                            })
 
 
 
@@ -127,11 +132,11 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
                         }
 
-                    });*/
+                    });
 
 
                 }
-            });
+            });*/
 
          /*   vote.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -158,5 +163,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
         }
     }
+
+
 
 }
