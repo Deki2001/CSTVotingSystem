@@ -43,8 +43,10 @@ public class GirlsVote extends AppCompatActivity {
     }
 
     public void voteCCCboys(View view) {
-        startActivity(new Intent(getApplicationContext(), CCVote.class));
+        startActivity(new Intent(getApplicationContext(), CCVote .class));
 
 
     }
+
+
 }
