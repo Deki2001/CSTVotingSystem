@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +25,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.regex.Pattern;
 
@@ -134,6 +133,7 @@ public class Login extends AppCompatActivity {
                 pd.setTitle("Logging in...");
                 pd.show();
 
+
                 if (valid) {
                     fAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
@@ -168,14 +168,19 @@ public class Login extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Log.d("TAG", "onSuccess: " + documentSnapshot.getData());
                 //identify the user access level
-                if (documentSnapshot.getString("isAdmin") != null) {
+                if (documentSnapshot.getString("Gender").equals("Admin")) {
                     //user is admin
                     startActivity(new Intent(getApplicationContext(), adminpage.class));
                     finish();
                 }
 
-                if (documentSnapshot.getString("isUser") != null) {
+                if (documentSnapshot.getString("Gender").equals("Female")) {
                     startActivity(new Intent(getApplicationContext(), UserPage.class));
+                    finish();
+                }
+
+                if (documentSnapshot.getString("Gender").equals("Male")) {
+                    startActivity(new Intent(getApplicationContext(), MalePage.class));
                     finish();
                 }
             }

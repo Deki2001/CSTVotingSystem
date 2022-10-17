@@ -32,9 +32,14 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_admin.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_adminpage.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_block_councillor_girls_vote.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_boys_vote.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_cacboys_vote.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_candidate_big_view.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_candidate_list.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_candidate_page.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_ccvote.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_girls_vote.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_male_page.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_manifesto_list.xml" value="0.18" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_manifesto_recycleview.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_profileupdate.xml" value="0.2" />
@@ -47,6 +52,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_userhome.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_view_candidates.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_virew_candidates.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_vote.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/login.xml" value="0.1859375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/singlecandidates.xml" value="0.2" />
       </map>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserPage">
+    tools:context=".MalePage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,43 +18,43 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/CCvote"
+            android:id="@+id/BoyCCvote"
             style="@style/mainpage_button"
             android:layout_marginStart="70dp"
             android:layout_marginTop="388dp"
             android:layout_marginEnd="70dp"
-            android:onClick="candidates"
             android:text="Candidates"
+            android:onClick="boymanifesto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/verifyTextUser" />
 
         <Button
-            android:id="@+id/vote"
+            android:id="@+id/Boyvote"
             style="@style/mainpage_button"
             android:layout_marginStart="70dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:text="@string/vote"
-            android:onClick="votes"
+            android:text="Vote"
+            android:onClick="Voteboys"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CCvote" />
+            app:layout_constraintTop_toBottomOf="@+id/BoyCCvote" />
 
         <Button
-            android:id="@+id/result"
+            android:id="@+id/boyresult"
             style="@style/mainpage_button"
             android:layout_marginStart="70dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
             android:text="@string/result"
-            android:onClick="Result"
+            android:onClick="boyresult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vote" />
+            app:layout_constraintTop_toBottomOf="@+id/Boyvote" />
 
 
 
@@ -70,34 +70,19 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.cardview.widget.CardView
+
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="300dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/BoyCCvote"
             app:layout_constraintEnd_toEndOf="parent"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.denzcoskun.imageslider.ImageSlider
-                    android:id="@+id/imageSlider"
-                    android:layout_marginTop="55dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="1000"
-                    app:iss_corner_radius="10"
-                    app:iss_period="1000"
-                    app:iss_title_background="@color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/vote1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</ScrollView>
+</FrameLayout>

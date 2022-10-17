@@ -41,4 +41,10 @@ public class GirlsVote extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), CACGirlsVote.class));
 
     }
+
+    public void voteCCCboys(View view) {
+        startActivity(new Intent(getApplicationContext(), CCVote.class));
+
+
+    }
 }

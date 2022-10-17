@@ -38,4 +38,9 @@ public class BoysVote extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), DCC_Boys.class));
 
     }
+
+    public void CC(View view) {
+        startActivity(new Intent(getApplicationContext(), CCVote.class));
+
+    }
 }

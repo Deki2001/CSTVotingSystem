@@ -2,16 +2,11 @@ package com.example.cstvotingsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,13 +47,7 @@ public class UserPage extends AppCompatActivity{
         vote = findViewById(R.id.vote);
         result = findViewById(R.id.result);
 
-        vote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Vote.class));
 
-            }
-        });
     }
 
         public void candidate (View view){
@@ -98,12 +87,22 @@ public class UserPage extends AppCompatActivity{
         }
 
 
-        public void gotocandidate (View view){
-            startActivity(new Intent(getApplicationContext(), ManifestoRecycleview.class));
-        }
+
 
     public void Result(View view) {
         startActivity(new Intent(getApplicationContext(), ViewResult.class));
+
+    }
+
+
+
+    public void candidates(View view) {
+        startActivity(new Intent(getApplicationContext(), CandidatePage.class));
+
+    }
+
+    public void votes(View view) {
+        startActivity(new Intent(getApplicationContext(), GirlsVote.class));
 
     }
 }
