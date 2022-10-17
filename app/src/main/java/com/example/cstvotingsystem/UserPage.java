@@ -85,5 +85,7 @@ public class UserPage extends AppCompatActivity{
         }
 
     public void Result(View view) {
+        startActivity(new Intent(getApplicationContext(), ViewResult.class));
+
     }
 }
