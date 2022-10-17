@@ -65,7 +65,7 @@
             android:exported="false" />
         <activity
             android:name=".BlockCouncillor_boys"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".DCC_Boys"
             android:exported="false" />
