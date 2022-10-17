@@ -2,6 +2,7 @@ package com.example.cstvotingsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,12 +17,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
 
 public class UserPage extends AppCompatActivity{
 
     Button vote, result;
-
+    private ImageSlider imageSlider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,18 @@ public class UserPage extends AppCompatActivity{
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        imageSlider = findViewById(R.id.imageSlider);
+
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.img1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img3, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img4, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.img5, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.imh6, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         vote = findViewById(R.id.vote);
         result = findViewById(R.id.result);
