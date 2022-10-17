@@ -42,7 +42,7 @@ public class CACBoysResult extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), BlockCouncillor_boysResult.class));
+                startActivity(new Intent(getApplicationContext(), CultureCouncillorBoysResult.class));
 
             }
         });

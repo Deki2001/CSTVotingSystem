@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,22 +28,34 @@ public class DDC_girlsResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ddc_girls_result);
+
         FirebaseDatabase db;
         DatabaseReference root;
         FirebaseStorage mStroage;
         RecyclerView recyclerView;
         ViewResultAdapter Adapter;
         List<ViewResultModel> candidateMdList;
+        FloatingActionButton floatingActionButton;
+
+        floatingActionButton = findViewById(R.id.floatingActionButton);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CACGirlsResult.class));
+
+            }
+        });
 
 
-        recyclerView = (RecyclerView)findViewById(R.id.resultDDCboysrecyclerView);
+        recyclerView = (RecyclerView)findViewById(R.id.resultDDCgirlsrecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         db = FirebaseDatabase.getInstance();
         root = db.getReference().child("Students");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Girls Deputy Chief Councillor");
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Girl Deputy Chief Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()

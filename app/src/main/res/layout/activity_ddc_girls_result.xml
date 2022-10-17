@@ -10,11 +10,23 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:text="Girls Deputy Chief Councillor"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20dp"
+        >
+
+    </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resultDDCgirlsrecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="85dp"
         android:padding="16dp"
         android:scrollbars="vertical" />
     <androidx.constraintlayout.widget.ConstraintLayout

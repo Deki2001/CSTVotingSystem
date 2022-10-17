@@ -25,6 +25,18 @@
             android:name=".MalePage"
             android:exported="false" />
         <activity
+            android:name=".GamesCouncillorGirlsResult"
+            android:exported="false" />
+        <activity
+            android:name=".GamesCouncillorResult"
+            android:exported="false" />
+        <activity
+            android:name=".CultureCouncillorGirlsResult"
+            android:exported="false" />
+        <activity
+            android:name=".CultureCouncillorBoysResult"
+            android:exported="false" />
+        <activity
             android:name=".CACGirlsResult"
             android:exported="false" />
         <activity

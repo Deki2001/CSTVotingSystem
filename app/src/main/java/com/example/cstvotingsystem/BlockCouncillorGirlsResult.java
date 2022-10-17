@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,8 +37,21 @@ public class BlockCouncillorGirlsResult extends AppCompatActivity {
         ViewResultAdapter Adapter;
         List<ViewResultModel> candidateMdList;
 
+        FloatingActionButton floatingActionButton;
 
-        recyclerView = (RecyclerView)findViewById(R.id.resultBlockCouncillorgirlsrecyclerView);
+        floatingActionButton = findViewById(R.id.floatingActionButton);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+           //     startActivity(new Intent(getApplicationContext(), UserPage.class));
+
+            }
+        });
+
+
+        recyclerView = (RecyclerView)findViewById(R.id.GirlsBlockCouncillor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -50,7 +66,7 @@ public class BlockCouncillorGirlsResult extends AppCompatActivity {
 //                  .build();
 
         mStroage = FirebaseStorage.getInstance();
-        recyclerView = findViewById(R.id.resultBlockCouncillorgirlsrecyclerView);
+        recyclerView = findViewById(R.id.GirlsBlockCouncillor);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
