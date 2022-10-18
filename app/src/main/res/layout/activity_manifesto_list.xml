@@ -11,12 +11,11 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="20dp"
     android:background="?android:selectableItemBackground"
-    android:elevation="4dp"
+    android:elevation="5dp"
     android:scrollbars="vertical"
     app:cardCornerRadius="21dp"
     app:cardUseCompatPadding="true"
     tools:context=".ManifestoList">
-
 
 
     <FrameLayout
