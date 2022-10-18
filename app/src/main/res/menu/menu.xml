@@ -11,6 +11,11 @@
 
         <menu>
 
+            <item android:title="Home"
+                android:id="@+id/home"
+                app:showAsAction="never"
+                android:icon="@drawable/ic_home"/>
+
             <item android:title="@string/user_profile"
                 android:id="@+id/user_profile"
                 app:showAsAction="never"
