@@ -54,38 +54,31 @@ public class GirlsVote extends AppCompatActivity {
     }
 
     public void voteDCCboys(View view) {
-        startActivity(new Intent(getApplicationContext(), DCCGirlsVote.class));
+        startActivity(new Intent(getApplicationContext(),DDC_girlsResult.class));
 
 
     }
 
     public void BCVote(View view) {
-        startActivity(new Intent(getApplicationContext(), BlockCouncillorGirlsVote.class));
+        startActivity(new Intent(getApplicationContext(), BlockCouncillorGirlsResult.class));
 
 
     }
 
     public void GCVote(View view) {
-        startActivity(new Intent(getApplicationContext(), GamesCouncillorGirls.class));
+        startActivity(new Intent(getApplicationContext(), GamesCouncillorGirlsResult.class));
 
 
     }
 
     public void girlsCultureVote(View view) {
-        startActivity(new Intent(getApplicationContext(), CultureCouncillorGirls.class));
+        startActivity(new Intent(getApplicationContext(), CultureCouncillorGirlsResult.class));
 
     }
 
     public void girlcacVote(View view) {
-        startActivity(new Intent(getApplicationContext(), CACGirlsVote.class));
+        startActivity(new Intent(getApplicationContext(), CACGirlsResult.class));
 
     }
-
-    public void voteCCCboys(View view) {
-        startActivity(new Intent(getApplicationContext(), CCVote .class));
-
-
-    }
-
 
 }

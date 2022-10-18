@@ -1,6 +1,10 @@
 package com.example.cstvotingsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,40 +12,86 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CACGirlsVote extends AppCompatActivity {
 
+    Button sub;
+    DatabaseReference ref;
+    FirebaseDatabase db;
+    FirebaseFirestore fStore;
+
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.ECLAIR
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            // Take care of calling this method on earlier versions of
+            // the platform where it doesn't exist.
+            onBackPressed();
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // This will be called either automatically for you on 2.0
+        // or later, or by the code above on earlier versions of the
+        // platform.
+        startActivity(new Intent(CACGirlsVote.this, CACGirlsVote.class));
+
+        return;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cacgirls_vote);
 
-
-        FirebaseDatabase db;
+//        sub.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Registered User");
+////                ref.child("isVote").setValue("True");
+//                startActivity(new Intent(CACGirlsVote.this, UserPage.class));
+//
+//
+//            }
+//        });
+        final FirebaseDatabase[] db = new FirebaseDatabase[1];
         DatabaseReference root;
         FirebaseStorage mStroage;
         RecyclerView recyclerView;
         VoteCandidateAdapter Adapter;
         List<CandidateModel> candidateMdList;
+        sub = findViewById(R.id.submit);
 
 
         recyclerView = (RecyclerView)findViewById(R.id.CACGirlsrecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        db = FirebaseDatabase.getInstance();
         //root = db.getReference().child("Students");
+
+
 
         Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Girls College Academy Committee");
 
@@ -58,6 +108,8 @@ public class CACGirlsVote extends AppCompatActivity {
         candidateMdList = new ArrayList<CandidateModel>();
         Adapter = new VoteCandidateAdapter(CACGirlsVote.this, candidateMdList);
         recyclerView.setAdapter(Adapter);
+
+
 
 
         query.addChildEventListener(new ChildEventListener() {
@@ -89,8 +141,29 @@ public class CACGirlsVote extends AppCompatActivity {
             }
         });
 
-
     }
-}
+
+
+    public void sub(View view) {
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Registered User").child(fAuth.getUid());
+//
+//        AuthResult authResult;
+//        ref.child("isVote").setValue("True");
+        String uid = fAuth.getCurrentUser().getUid();
+        DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(uid);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("isVote", "True");
+        df.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                startActivity(new Intent(getApplicationContext(), UserPage.class));
+
+            }
+        });
+
+
+    }        }
 
 

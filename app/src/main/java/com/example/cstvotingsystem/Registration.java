@@ -82,6 +82,12 @@ public class Registration extends AppCompatActivity { //sgg
                 String confirm_password = confirmPassword.getText().toString();
                 String user_Name = userName.getText().toString();
 
+                String isVote = "False";
+//                String isvt= isVote.toString();
+
+
+
+
                 int genderselected = genderbtn.getCheckedRadioButtonId();
                 gender = findViewById(genderselected);
                 String  textGender = gender.getText().toString();
@@ -143,7 +149,7 @@ public class Registration extends AppCompatActivity { //sgg
 
 
                     progressBar.setVisibility(View.VISIBLE);
-                    registerUser(user_id, user_Name,textGender,user_email,user_password);  // user
+                    registerUser(user_id, user_Name,textGender,user_email,user_password,isVote);  // user
                 }
 
 
@@ -152,7 +158,7 @@ public class Registration extends AppCompatActivity { //sgg
 
     }
 
-    private void registerUser(String user_id, String user_name,String textGender, String user_email, String user_password) {
+    private void registerUser(String user_id, String user_name,String textGender, String user_email, String user_password, String isvote) {
        fAuth = FirebaseAuth.getInstance();
        fStore = FirebaseFirestore.getInstance();
 
@@ -165,7 +171,7 @@ public class Registration extends AppCompatActivity { //sgg
                     FirebaseUser fuser = fAuth.getCurrentUser();
 
                     //Enter User data into the real time database
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(user_id,user_name,textGender,user_email,user_password);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(user_id,user_name,textGender,user_email,user_password, isvote);
 
                     //Extracting User reference from Database for "Registered User"
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered User");
@@ -201,6 +207,9 @@ public class Registration extends AppCompatActivity { //sgg
                                         user.put("Gender", textGender);
                                         //specify if the user is Admin
                                         user.put("isUser","0");
+                                        user.put("isVote", "false");
+
+
 
                                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override

@@ -1,16 +1,13 @@
 package com.example.cstvotingsystem;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,17 +33,7 @@ public class CultureCouncillorGirlsResult extends AppCompatActivity {
         ViewResultAdapter Adapter;
         List<ViewResultModel> candidateMdList;
 
-        FloatingActionButton floatingActionButton;
 
-        floatingActionButton = findViewById(R.id.floatingActionButton);
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), GamesCouncillorGirlsResult.class));
-
-            }
-        });
 
 
         recyclerView = (RecyclerView)findViewById(R.id.CultureGirlsResult);

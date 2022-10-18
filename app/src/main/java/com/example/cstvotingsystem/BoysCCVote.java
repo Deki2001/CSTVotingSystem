@@ -1,29 +1,32 @@
 package com.example.cstvotingsystem;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.storage.FirebaseStorage;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.view.KeyEvent;
+        import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
+        import androidx.annotation.NonNull;
+        import androidx.annotation.Nullable;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
 
-public class CultureCouncillorBoys extends AppCompatActivity {
+        import com.google.android.material.floatingactionbutton.FloatingActionButton;
+        import com.google.firebase.database.ChildEventListener;
+        import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DatabaseError;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.Query;
+        import com.google.firebase.storage.FirebaseStorage;
+
+        import java.util.ArrayList;
+        import java.util.List;
+
+public class BoysCCVote extends AppCompatActivity {
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.ECLAIR
@@ -42,16 +45,15 @@ public class CultureCouncillorBoys extends AppCompatActivity {
         // This will be called either automatically for you on 2.0
         // or later, or by the code above on earlier versions of the
         // platform.
-        startActivity(new Intent(CultureCouncillorBoys.this, CultureCouncillorBoys.class));
+        startActivity(new Intent(BoysCCVote.this, BoysCCVote.class));
 
         return;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_culture_councillor_boys);
+        setContentView(R.layout.activity_boys_ccvote);
 
 
         FirebaseDatabase db;
@@ -62,14 +64,14 @@ public class CultureCouncillorBoys extends AppCompatActivity {
         List<CandidateModel> candidateMdList;
 
 
-        recyclerView = (RecyclerView)findViewById(R.id.CultureCouncillorBoysRecycleview);
+        recyclerView = (RecyclerView)findViewById(R.id.boysccvoterecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         db = FirebaseDatabase.getInstance();
         //root = db.getReference().child("Students");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Boys Cultural Councillor");
+        Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role").equalTo("Chief Councillor");
 
 //        FirebaseRecyclerOptions<CandidateModel> options =
 //          new FirebaseRecyclerOptions.Builder<>()
@@ -77,25 +79,26 @@ public class CultureCouncillorBoys extends AppCompatActivity {
 //                  .build();
 
         mStroage = FirebaseStorage.getInstance();
-        recyclerView = findViewById(R.id.CultureCouncillorBoysRecycleview);
+        recyclerView = findViewById(R.id.boysccvoterecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        candidateMdList = new ArrayList<CandidateModel>();
-        Adapter = new VoteCandidateAdapter(CultureCouncillorBoys.this, candidateMdList);
-        recyclerView.setAdapter(Adapter);
 
+        candidateMdList = new ArrayList<CandidateModel>();
+        Adapter = new VoteCandidateAdapter(BoysCCVote.this, candidateMdList);
+        recyclerView.setAdapter(Adapter);
         FloatingActionButton floatingActionButton;
 
-        floatingActionButton = findViewById(R.id.boyculfloatingActionButton);
+        floatingActionButton = findViewById(R.id.ccboysfloatingActionButton);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CACBoysVote.class));
+                startActivity(new Intent(getApplicationContext(), DCC_Boys.class));
 
             }
         });
+
 
 
 
@@ -132,5 +135,3 @@ public class CultureCouncillorBoys extends AppCompatActivity {
 
     }
 }
-
-

@@ -11,4 +11,6 @@ public class Vote_List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_list);
     }
+
+
 }
