@@ -37,7 +37,7 @@
                 android:text="Candidate Name"
                 android:textSize="17dp" />
 
-            <ImageView
+            <com.github.chrisbanes.photoview.PhotoView
                 android:id="@+id/manifesto_recycler_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

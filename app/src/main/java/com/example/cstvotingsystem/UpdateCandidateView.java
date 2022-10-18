@@ -56,7 +56,6 @@ public class  UpdateCandidateView extends AppCompatActivity {
         candidateAdapter = new UpdateCandidateAdapter(UpdateCandidateView.this, candidateMdList);
         recyclerView.setAdapter(candidateAdapter);
 
-
         root.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {

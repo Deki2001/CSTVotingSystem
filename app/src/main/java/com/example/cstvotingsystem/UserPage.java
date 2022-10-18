@@ -51,12 +51,10 @@ public class UserPage extends AppCompatActivity{
         vote = findViewById(R.id.vote);
         result = findViewById(R.id.result);
 
-
     }
 
         public void candidate (View view){
             startActivity(new Intent(getApplicationContext(), ManifestoRecycleview .class));
-
         }
 
         public boolean onCreateOptionsMenu (Menu menu){
@@ -91,8 +89,6 @@ public class UserPage extends AppCompatActivity{
         startActivity(new Intent(getApplicationContext(), ViewResult.class));
 
     }
-
-
 
     public void candidates(View view) {
         startActivity(new Intent(getApplicationContext(), CandidatePage.class));
