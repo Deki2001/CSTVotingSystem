@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -31,6 +32,9 @@ public class UserPage extends AppCompatActivity{
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
+
 
         imageSlider = findViewById(R.id.imageSlider);
 
@@ -62,11 +66,6 @@ public class UserPage extends AppCompatActivity{
         }
         @Override
         public boolean onOptionsItemSelected (@NonNull MenuItem item){
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    this.finish();
-                    return true;
-            }
             if (item.getItemId() == R.id.logout) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
@@ -79,14 +78,13 @@ public class UserPage extends AppCompatActivity{
                 startActivity(new Intent(getApplicationContext(), AboutPage.class));
             }
             return super.onOptionsItemSelected(item);
-        }
-        public void logout_user (View view){
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getApplicationContext(), Login.class));
-            finish();
-        }
 
-
+        }
+    public void logout(View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), Login.class));
+        finish();
+    }
 
 
     public void Result(View view) {
