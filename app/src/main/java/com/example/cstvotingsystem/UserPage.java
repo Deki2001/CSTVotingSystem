@@ -189,7 +189,7 @@ public class UserPage extends AppCompatActivity{
     }
 
     public void boyresult(View view) {
-        startActivity(new Intent(getApplicationContext(), GirlsVote.class));
+        startActivity(new Intent(getApplicationContext(), Vote.class));
 
     }
 }
