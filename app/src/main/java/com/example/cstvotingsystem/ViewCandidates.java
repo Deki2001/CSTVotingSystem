@@ -124,6 +124,9 @@ public class ViewCandidates extends AppCompatActivity {
         if (item.getItemId() == R.id.about) {
             startActivity(new Intent(getApplicationContext(), AboutPage.class));
         }
+        if (item.getItemId() == R.id.home){
+            startActivity(new Intent(getApplicationContext(), UserPage.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 }

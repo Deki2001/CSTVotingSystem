@@ -141,7 +141,7 @@
             android:exported="false" />
         <activity
             android:name=".UserProfile"
-            android:label="User Profile" />
+            android:label=" " />
         <activity android:name=".AboutPage" />
         <activity
             android:name=".Login"
