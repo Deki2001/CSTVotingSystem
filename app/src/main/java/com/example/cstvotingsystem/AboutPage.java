@@ -10,7 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-
+//about page
 public class AboutPage extends AppCompatActivity {
 
     @Override
