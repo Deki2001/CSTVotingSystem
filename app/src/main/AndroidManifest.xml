@@ -122,9 +122,6 @@
             android:name=".Register_Candidate"
             android:exported="false" />
         <activity
-            android:name=".CandidateBigViewActivity"
-            android:exported="false" />
-        <activity
             android:name=".ViewCandidates"
             android:exported="false" />
         <activity
