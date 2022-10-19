@@ -31,8 +31,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.regex.Pattern;
+
 public class Register_Candidate extends AppCompatActivity{
     private  static final String TAG = "Register_Candidate";
+    private static final Pattern EMAIL_ADDRESS = Pattern.compile
+            ("^[0-9]+\\.cst@rub\\.edu\\.bt",Pattern.CASE_INSENSITIVE);
     // register candidates
     EditText Mid, Mname, Memail;
     CandidateModel member;
@@ -122,11 +126,22 @@ public class Register_Candidate extends AppCompatActivity{
                 String role = spinner.getSelectedItem().toString();
 
 
-                Toast.makeText(Register_Candidate.this, "Value stored successfully", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(Register_Candidate.this, "Value stored successfully", Toast.LENGTH_SHORT).show();
 
                 root.child(String.valueOf(maxid+1)).setValue(spinnerDataSave);
 
-                if (!(id.isEmpty() && name .isEmpty() && email.isEmpty() && image != null)) {
+                if(id.length() != 8){
+                    Mid.setError("College ID must have 8 characters");
+                    Mid.requestFocus();
+                }
+
+                else if(!EMAIL_ADDRESS.matcher(email).matches()){
+                       Memail.setError("Enter Valid College Email ID");
+                       Memail.requestFocus();
+
+                }
+
+                else if (!(id.isEmpty() && name .isEmpty() && email.isEmpty() && image != null)) {
 
 
                     progressDialog.setTitle("uploading...");
@@ -152,15 +167,22 @@ public class Register_Candidate extends AppCompatActivity{
                                      newPost.child("Vote").setValue(0);
                                     newPost.child("Image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
-
-                                    Intent intent = new Intent(Register_Candidate.this, ViewCandidates.class);
+                                    Toast.makeText(Register_Candidate.this, "Value stored successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Register_Candidate.this, adminpage.class);
                                     startActivity(intent);
+
 
                                 }
                             });
 
                         }
                     });
+                }
+
+                else {
+                    Toast.makeText(Register_Candidate.this, "Enter the Value correctly", Toast.LENGTH_SHORT).show();
+
+
                 }
 //                HashMap<String, String> userMap = new HashMap<>();
 //
