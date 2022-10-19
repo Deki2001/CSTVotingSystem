@@ -22,5 +22,5 @@ public class AboutPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-    }
+    } //splash
 }
