@@ -10,15 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -37,6 +40,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
     Context context;
     List<CandidateModel> candidateModelList;
+    private boolean clicked = false;
     // FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     //  FieldValue increment = FieldValue.increment(1);
 
@@ -49,14 +53,24 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_vote_list,parent,false);
+
+        View v = inflater.from(parent.getContext()).inflate(R.layout.activity_vote_list,parent,false);
+        ViewHolder viewHolder = new ViewHolder(v);
+
+
         return new VoteCandidateAdapter.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CandidateModel candidateModel = candidateModelList.get(position);
+
+        final ViewHolder myHolder = (ViewHolder) holder;
+        if (clicked) myHolder.vote.setEnabled(false);
+        else myHolder.vote.setEnabled(true);
+
 
 
         holder.name.setText("Name: " + candidateModel.getName());
@@ -68,6 +82,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
         String image = null;
         image = candidateModel.getImage();
         Picasso.get().load(image).into(holder.imageView);
+
 
 
     }
@@ -94,6 +109,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
 
             imageView = itemView.findViewById(R.id.image_voteView);
             name = itemView.findViewById(R.id.t1);
@@ -139,12 +155,19 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                     mDatabaseReference.child("Students").child(str).child("Vote").setValue(ServerValue.increment(1));
                 }
             });*/ // main Function of vote
+
+
+
+
+
             vote.setOnClickListener(new View.OnClickListener() {
 
 
 
                 @Override
                 public void onClick(View v) {
+                    clicked = true;
+                    notifyDataSetChanged();
                     //start alert dialog
                     final AlertDialog.Builder Dialog = new AlertDialog.Builder(v.getContext());
                     Dialog.setTitle("Are you sure to vote? ");
@@ -182,43 +205,57 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                             System.out.println("..................."+text[1]);
                             String str=text[1].trim();
                             mDatabaseReference.child("Students").child(str).child("Vote").setValue(ServerValue.increment(1));
-//                            Query query = FirebaseDatabase.getInstance().getReference("Registered User").orderByChild("Vote");
-//                            query.addChildEventListener(new ChildEventListener() {
-//                                @Override
-//                                public void onChildAdded(@NonNull DataSnapshot datasnapshot, @Nullable String previousChildName) {
+                            DatabaseReference current = mDatabaseReference.child("Students").child(str).child("Role");
+
+
+
+                            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role");
+                            query.addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot datasnapshot, @Nullable String previousChildName) {
 //                                    for (DataSnapshot ds : datasnapshot.getChildren()) {
-//                                        vote.setClickable(false);
+//                                        ViewHolder viewHolder = new ViewHolder(itemView);
+//                                        viewHolder.vote.setEnabled(false);
 //
+//                                        if (clicked) vi
+//                                        else viewHolder.vote.setEnabled(true);
 //                                    }
-//
-//                                }
-//
-//                                @Override
-//                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//
-//                                }
-//
-//                                @Override
-//                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//
-//                                }
-//
-//                                @Override
-//                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                                }
-//
-//                                @Override
-//                                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                                }
-//                            });                startActivity(new Intent(getApplicationContext(), BlockCouncillorGirlsVote.class));
-                            ViewHolder viewHolder = new ViewHolder(itemView);
-                            viewHolder.vote.setEnabled(false);
+
+
+
+                                }
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
+
+
 
                         }
+
                     });
+
+
 
                     Dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
@@ -232,6 +269,9 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                     Dialog.create().show();
                 }
             });
+
+
+
 
 
 

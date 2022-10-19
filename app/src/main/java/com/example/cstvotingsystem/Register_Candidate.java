@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,7 +39,7 @@ public class Register_Candidate extends AppCompatActivity{
     CandidateModel member;
     Button viewList, register;
 
-   // String item;
+    // String item;
     private Spinner spinner;
     ImageButton imageButton;
     FirebaseDatabase db = FirebaseDatabase.getInstance();//database
@@ -72,14 +69,14 @@ public class Register_Candidate extends AppCompatActivity{
 
         member = new CandidateModel();
 
-     //   Mrole = findViewById(R.id.candidate_role);
+        //   Mrole = findViewById(R.id.candidate_role);
 
         register = findViewById(R.id.register_btn);
         spinnerDataSave = new SpinnerDataSave();
 
         progressDialog = new ProgressDialog(this);
 
-         spinner = findViewById(R.id.spinner1);
+        spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.dropdown,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -164,7 +161,7 @@ public class Register_Candidate extends AppCompatActivity{
                                     newPost.child("Name").setValue(name);
                                     newPost.child("Email").setValue(email);
                                     newPost.child("Role").setValue(role);
-                                     newPost.child("Vote").setValue(0);
+                                    newPost.child("Vote").setValue(0);
                                     newPost.child("Image").setValue(task.getResult().toString());
                                     progressDialog.dismiss();
                                     Toast.makeText(Register_Candidate.this, "Value stored successfully", Toast.LENGTH_SHORT).show();
@@ -221,6 +218,3 @@ public class Register_Candidate extends AppCompatActivity{
 
     }*/
 }
-
-
-
