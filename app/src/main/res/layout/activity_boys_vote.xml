@@ -21,7 +21,7 @@
         <Button
             android:id="@+id/DCCVote"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="70dp"
@@ -29,65 +29,59 @@
             android:onClick="DCCvote"
             android:text="@string/dupety_chief_councillor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/CCVote" />
 
         <Button
             android:id="@+id/CCVote"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="@string/cheif_councillor"
+            android:background="@drawable/bluebtn"
             android:onClick="CC"
+            android:text="@string/cheif_councillor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <Button
             android:id="@+id/BCVote"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="Block Councillor"
+            android:background="@drawable/bluebtn"
             android:onClick="BlockCVote"
+            android:text="Block Councillor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DCCVote"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/DCCVote" />
 
         <Button
             android:id="@+id/GCVote"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="54dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
             android:layout_marginTop="33dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="Games Councillor"
+            android:background="@drawable/bluebtn"
             android:onClick="GCVote"
+            android:text="Games Councillor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BCVote"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/BCVote" />
 
         <Button
             android:id="@+id/CUltureCVote"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:layout_marginStart="70dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="33dp"
@@ -103,7 +97,7 @@
         <Button
             android:id="@+id/CACVote"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:layout_marginStart="70dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="33dp"
