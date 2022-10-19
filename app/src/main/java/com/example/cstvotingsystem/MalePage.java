@@ -100,6 +100,24 @@ public class MalePage extends AppCompatActivity {
             }
         });
 
+        DocumentReference ref = fStore.collection("StartActivity").document("id");
+        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.getString("isStart").equals("False")) {
+                    //user is admin
+
+                    voter.setVisibility(View.GONE);
+                }
+                if (documentSnapshot.getString("isStart").equals("True")) {
+                    //user is admin
+
+                    voter.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
 
     }
     @Override

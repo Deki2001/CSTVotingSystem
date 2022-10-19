@@ -143,9 +143,6 @@ public class Login extends AppCompatActivity {
                                 pd.dismiss();
                                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 checkUserAccessLevel(authResult.getUser().getUid());
-                            } else {
-                                pd.dismiss();
-                                Toast.makeText(Login.this, "Please Verify Your Email To Login.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {

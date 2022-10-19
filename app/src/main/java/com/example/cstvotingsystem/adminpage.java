@@ -16,9 +16,14 @@ import androidx.appcompat.widget.Toolbar;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class adminpage extends AppCompatActivity {
     Button registerCandidate, viewCandidate ;
@@ -105,5 +110,44 @@ public class adminpage extends AppCompatActivity {
     public void viewManifesto(View view) {
         startActivity(new Intent(getApplicationContext(), UpdateManifestos.class));
 
+    }
+
+    public void Stop(View view) {
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Registered User").child(fAuth.getUid());
+//
+//        AuthResult authResult;
+//        ref.child("isVote").setValue("True");
+        String uid = fAuth.getCurrentUser().getUid();
+        DocumentReference df = FirebaseFirestore.getInstance().collection("StartActivity").document("id");
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("isStart", "False");
+        df.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(adminpage.this, "Activity Stoped", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void Start(View view) {
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Registered User").child(fAuth.getUid());
+//
+//        AuthResult authResult;
+//        ref.child("isVote").setValue("True");
+        String uid = fAuth.getCurrentUser().getUid();
+        DocumentReference ref = FirebaseFirestore.getInstance().collection("StartActivity").document("id");
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("isStart", "True");
+        ref.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(adminpage.this, "Activity Started", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }
