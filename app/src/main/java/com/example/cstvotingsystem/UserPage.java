@@ -28,6 +28,7 @@ public class UserPage extends AppCompatActivity{
 
 
     Button voter;
+    Button result;
     private ImageSlider imageSlider;
     FirebaseFirestore fStore;
 
@@ -64,6 +65,7 @@ public class UserPage extends AppCompatActivity{
 
         fStore = FirebaseFirestore.getInstance();
         imageSlider = findViewById(R.id.imageSlider);
+        result = findViewById(R.id.result);
 
 
         ArrayList<SlideModel> slideModels = new ArrayList<>();
@@ -103,11 +105,14 @@ public class UserPage extends AppCompatActivity{
                     //user is admin
 
                     voter.setVisibility(View.GONE);
+
                 }
                 if (documentSnapshot.getString("isStart").equals("True")) {
                     //user is admin
 
                     voter.setVisibility(View.VISIBLE);
+
+
                 }
 
             }

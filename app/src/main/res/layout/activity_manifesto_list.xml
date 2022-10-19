@@ -40,10 +40,10 @@
             <com.github.chrisbanes.photoview.PhotoView
                 android:id="@+id/manifesto_recycler_id"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="244dp"
                 android:layout_gravity="center"
-                android:src="@drawable/profile_pic"
                 android:scaleType="fitXY"
+                android:src="@drawable/profile_pic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

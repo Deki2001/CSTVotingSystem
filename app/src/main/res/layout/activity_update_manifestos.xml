@@ -37,7 +37,7 @@
             android:id="@+id/UpdateManifesto"
             style="@style/title"
             android:layout_marginTop="24dp"
-            android:text="Update Manifestos"
+            android:text="Add Manifestos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />

@@ -10,18 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -167,7 +164,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                 @Override
                 public void onClick(View v) {
                     clicked = true;
-                    notifyDataSetChanged();
+
                     //start alert dialog
                     final AlertDialog.Builder Dialog = new AlertDialog.Builder(v.getContext());
                     Dialog.setTitle("Are you sure to vote? ");
@@ -206,46 +203,47 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                             String str=text[1].trim();
                             mDatabaseReference.child("Students").child(str).child("Vote").setValue(ServerValue.increment(1));
                             DatabaseReference current = mDatabaseReference.child("Students").child(str).child("Role");
+                            notifyDataSetChanged();
 
 
 
-                            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role");
-                            query.addChildEventListener(new ChildEventListener() {
-                                @Override
-                                public void onChildAdded(@NonNull DataSnapshot datasnapshot, @Nullable String previousChildName) {
-//                                    for (DataSnapshot ds : datasnapshot.getChildren()) {
-//                                        ViewHolder viewHolder = new ViewHolder(itemView);
-//                                        viewHolder.vote.setEnabled(false);
+//                            Query query = FirebaseDatabase.getInstance().getReference("Students").orderByChild("Role");
+//                            query.addChildEventListener(new ChildEventListener() {
+//                                @Override
+//                                public void onChildAdded(@NonNull DataSnapshot datasnapshot, @Nullable String previousChildName) {
+////                                    for (DataSnapshot ds : datasnapshot.getChildren()) {
+////                                        ViewHolder viewHolder = new ViewHolder(itemView);
+////                                        viewHolder.vote.setEnabled(false);
+////
+////                                        if (clicked) vi
+////                                        else viewHolder.vote.setEnabled(true);
+////                                    }
 //
-//                                        if (clicked) vi
-//                                        else viewHolder.vote.setEnabled(true);
-//                                    }
-
-
-
-                                }
-
-                                @Override
-                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-
-                                }
-
-                                @Override
-                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                                }
-
-                                @Override
-                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
+//
+//
+//                                }
+//
+//                                @Override
+//                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//
+//                                }
+//
+//                                @Override
+//                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//                                }
+//
+//                                @Override
+//                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                                }
+//                            });
 
 
 
@@ -253,7 +251,10 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
 
                         }
 
+
+
                     });
+
 
 
 
@@ -262,6 +263,7 @@ public class VoteCandidateAdapter extends RecyclerView.Adapter<VoteCandidateAdap
                         public void onClick(DialogInterface dialog, int which) {
                             // close the dialog
 
+                            vote.setEnabled(true);
 
                         }
                     });
