@@ -19,88 +19,75 @@
 
         <Button
             android:id="@+id/DCCVote"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="307dp"
+            android:layout_height="54dp"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="70dp"
             android:background="@drawable/bluebtn"
 
             android:onClick="voteDCCboys"
             android:text="@string/dupety_chief_councillor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <Button
             android:id="@+id/BCVote"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="307dp"
+            android:layout_height="46dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="Block Councillor"
+            android:background="@drawable/bluebtn"
             android:onClick="BCVote"
+            android:text="Block Councillor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DCCVote"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/DCCVote" />
 
         <Button
             android:id="@+id/GCVote"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="307dp"
+            android:layout_height="50dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="Games Councillor"
+            android:background="@drawable/bluebtn"
             android:onClick="GCVote"
+            android:text="Games Councillor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BCVote"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/BCVote" />
 
         <Button
             android:id="@+id/CUltureCVote"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="307dp"
+            android:layout_height="50dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="Culture Councillor"
+            android:background="@drawable/bluebtn"
             android:onClick="girlsCultureVote"
+            android:text="Culture Councillor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/GCVote"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/GCVote" />
 
         <Button
             android:id="@+id/CACVote"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="307dp"
+            android:layout_height="50dp"
             android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:text="College Academic Committee"
+            android:background="@drawable/bluebtn"
             android:onClick="girlcacVote"
 
+            android:text="College Academic Committee"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CUltureCVote"
-            android:background="@drawable/bluebtn"/>
+            app:layout_constraintTop_toBottomOf="@+id/CUltureCVote" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
