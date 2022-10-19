@@ -13,7 +13,8 @@
     android:scrollbars="vertical"
     app:cardCornerRadius="21dp"
     app:cardUseCompatPadding="true"
-    tools:context=".CandidateList">
+    tools:context=".CandidateList"
+    >
 
 
 

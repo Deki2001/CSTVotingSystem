@@ -15,6 +15,6 @@
         android:layout_marginTop="55dp"
         android:scrollbars="vertical"
         style="@style/recyclearView"
-        android:background="@color/blue"/>
+        android:background="@drawable/backgroung_design"/>
 
 </FrameLayout>

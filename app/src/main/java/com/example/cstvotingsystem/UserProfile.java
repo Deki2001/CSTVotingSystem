@@ -106,10 +106,6 @@ public class UserProfile extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-    public void save_btn(View view) {
-    }
 }
 
 

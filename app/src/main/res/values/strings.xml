@@ -30,7 +30,7 @@
     <string name="dupety_chief_councillor">Dupety Chief Councillor</string>
     <string name="hostel_councillor">Hostel Councillor</string>
     <string name="title">CST Voting System</string>
-    <string name="about_app"><b>About App</b>:\n\nCST Voting System is a mobile voting \napplication for the CST councillors voting.
+    <string name="about_app">CST Voting System is a mobile voting \napplication for the CST councillors voting.
     With the help of this app, the students and the staffs can vote for their respective candidate.
     Only the staffs and students of CST can register and use this app . After logging into this application,
     the voter can view candidates, view their manifesto and view the result and also log out of the application.
