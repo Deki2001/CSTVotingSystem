@@ -51,6 +51,7 @@
     <string name="save">Save</string>
     <string name="add_profile">Add Profile</string>
     <string name="candidate">Candidates</string>
+    <string name="cheif_councillor">Cheif Councillor</string>
 
     <string-array name="dropdown">
         <item>Select Candidates role</item>
