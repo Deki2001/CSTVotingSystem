@@ -19,6 +19,9 @@
         android:theme="@style/Theme.CSTVotingSystem"
         tools:targetApi="31">
         <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
             android:name=".Vote"
             android:exported="false" />
         <activity
@@ -150,7 +153,7 @@
             android:label=" " />
         <activity android:name=".AboutPage" />
         <activity
-            android:name=".Login"
+            android:name=".SplashLayoutActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
