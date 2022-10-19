@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -62,6 +63,10 @@ public class MalePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_page);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         voter = findViewById(R.id.Boyvote);
 
         fStore = FirebaseFirestore.getInstance();
@@ -92,6 +97,24 @@ public class MalePage extends AppCompatActivity {
 
                     voter.setEnabled(false);
                 }
+            }
+        });
+
+        DocumentReference ref = fStore.collection("StartActivity").document("id");
+        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.getString("isStart").equals("False")) {
+                    //user is admin
+
+                    voter.setVisibility(View.GONE);
+                }
+                if (documentSnapshot.getString("isStart").equals("True")) {
+                    //user is admin
+
+                    voter.setVisibility(View.VISIBLE);
+                }
+
             }
         });
 

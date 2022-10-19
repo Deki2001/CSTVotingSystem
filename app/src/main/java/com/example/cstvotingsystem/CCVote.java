@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class CCVote extends AppCompatActivity {
 
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.ECLAIR
@@ -43,7 +45,9 @@ public class CCVote extends AppCompatActivity {
         // This will be called either automatically for you on 2.0
         // or later, or by the code above on earlier versions of the
         // platform.
-        startActivity(new Intent(CCVote.this, CCVote.class));
+        startActivity(new Intent(CCVote.this, DCCGirlsVote.class));
+        Toast.makeText(this, "Please Vote All...", Toast.LENGTH_SHORT).show();
+
 
         return;
     }

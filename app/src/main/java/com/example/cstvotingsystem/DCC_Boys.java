@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +44,8 @@ public class DCC_Boys extends AppCompatActivity {
         // This will be called either automatically for you on 2.0
         // or later, or by the code above on earlier versions of the
         // platform.
-        startActivity(new Intent(DCC_Boys.this, DCC_Boys.class));
+        startActivity(new Intent(DCC_Boys.this, BlockCouncillor_boys.class));
+        Toast.makeText(this, "Please Vote All...", Toast.LENGTH_SHORT).show();
 
         return;
     }
