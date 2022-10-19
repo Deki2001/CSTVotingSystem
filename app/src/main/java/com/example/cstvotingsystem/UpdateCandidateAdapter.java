@@ -19,12 +19,12 @@ import java.util.List;
 public class UpdateCandidateAdapter extends RecyclerView.Adapter<UpdateCandidateAdapter.ViewHolder> {
 
     Context context;
-    List<CandidateModel> candidateModelList;
+    List<CandidateModel> UpdateModelList;
 
 
-    public UpdateCandidateAdapter(UpdateCandidateView updateCandidateActivity, List<CandidateModel> candidateMdList) {
+    public UpdateCandidateAdapter(Context context, List<CandidateModel> candidateModelList) {
         this.context = context;
-        this.candidateModelList = candidateModelList;
+        this.UpdateModelList = candidateModelList;
 
     }
 
@@ -38,20 +38,20 @@ public class UpdateCandidateAdapter extends RecyclerView.Adapter<UpdateCandidate
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CandidateModel candidateModel = candidateModelList.get(position);
-        holder.name.setText("Name: " + candidateModel.getName());
-        holder.email.setText("Email: " + candidateModel.getEmail());
-        holder.id.setText("ID: " + candidateModel.getId());
-        holder.role.setText("Role: " + candidateModel.getRole());
+        CandidateModel updateCandidateModel = UpdateModelList.get(position);
+        holder.name.setText("Name: " + updateCandidateModel.getName());
+        holder.email.setText("Email: " + updateCandidateModel.getEmail());
+        holder.id.setText("ID: " + updateCandidateModel.getId());
+        holder.role.setText("Role: " + updateCandidateModel.getRole());
 
         String image = null;
-        image = candidateModel.getImage();
+        image = updateCandidateModel.getImage();
         Picasso.get().load(image).into(holder.imageView);
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           //     final DialogPlus dialogPlus = DialogPlus.newDialog(holder.imageView.getContext()).
+                //     final DialogPlus dialogPlus = DialogPlus.newDialog(holder.imageView.getContext()).
             }
         });
 
@@ -60,7 +60,7 @@ public class UpdateCandidateAdapter extends RecyclerView.Adapter<UpdateCandidate
 
     @Override
     public int getItemCount() {
-        return candidateModelList.size();
+        return UpdateModelList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -74,16 +74,17 @@ public class UpdateCandidateAdapter extends RecyclerView.Adapter<UpdateCandidate
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.update_recycler_id);
-            name = itemView.findViewById(R.id.t1);
-            email = itemView.findViewById(R.id.t2);
-            id = itemView.findViewById(R.id.t3);
-            role = itemView.findViewById(R.id.t4);
+            imageView = itemView.findViewById(R.id.image_update);
+            name = itemView.findViewById(R.id.t1_update);
+            email = itemView.findViewById(R.id.t2_update);
+            id = itemView.findViewById(R.id.t3_update);
+            role = itemView.findViewById(R.id.t4_update);
 
             delete = itemView.findViewById(R.id.btnDelete);
             edit = itemView.findViewById(R.id.btnEdit);
         }
     }
+
 
 
 }
