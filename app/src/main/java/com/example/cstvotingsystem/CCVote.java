@@ -25,6 +25,7 @@ import java.util.List;
 
 public class CCVote extends AppCompatActivity {
 
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.ECLAIR
