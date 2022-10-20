@@ -51,6 +51,9 @@ public class CandidatePage extends AppCompatActivity {
         if (item.getItemId() == R.id.home){
             startActivity(new Intent(getApplicationContext(), UserPage.class));
         }
+        if (item.getItemId() == R.id.home) {
+            startActivity(new Intent(getApplicationContext(), UserPage.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

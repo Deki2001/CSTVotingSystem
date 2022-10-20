@@ -7,10 +7,6 @@
     tools:context=".CACGirlsVote"
     android:background="@drawable/backgroung_design">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/CACGirlsrecyclerView"
         android:layout_width="match_parent"
@@ -23,7 +19,6 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <TextView
             android:id="@+id/textView2"

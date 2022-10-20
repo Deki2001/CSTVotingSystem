@@ -7,10 +7,6 @@
     tools:context=".BlockCouncillor_boys"
     android:background="@drawable/backgroung_design">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/BlockCouncillorBoysrecyclerView"
         android:layout_width="match_parent"

@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".BoysCCVote"
     android:background="@drawable/backgroung_design">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/boysccvoterecyclerView"

@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".DDC_boysResult"
     android:background="@drawable/backgroung_design">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

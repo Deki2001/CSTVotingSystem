@@ -88,6 +88,9 @@ public class adminpage extends AppCompatActivity {
         if(item.getItemId() == R.id.about){
             startActivity(new Intent(getApplicationContext(), AboutPage.class));
         }
+        if(item.getItemId() == R.id.home){
+            startActivity(new Intent(getApplicationContext(), adminpage.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

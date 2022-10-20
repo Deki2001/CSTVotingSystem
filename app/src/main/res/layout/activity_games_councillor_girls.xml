@@ -7,10 +7,6 @@
     tools:context=".GamesCouncillorGirls"
     android:background="@drawable/backgroung_design">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/GirlsGamesCouncillorRecyclerView"
         android:layout_width="match_parent"

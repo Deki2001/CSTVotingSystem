@@ -7,10 +7,6 @@
     tools:context=".GamesCouncillorVote"
     android:background="@drawable/backgroung_design">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/BoyGamesCouncillorRecyclerView"
         android:layout_width="match_parent"
