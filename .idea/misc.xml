@@ -22,40 +22,6 @@
         <entry key="..\:/CSTVoting/app/src/main/res/layout/login.xml" value="0.1796875" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/toolbar.xml" value="0.1796875" />
         <entry key="..\:/CSTVoting/app/src/main/res/layout/update_candidate_one.xml" value="0.1465811965811966" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_cacgirls_vote.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_candidate_list.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_candidate_page.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_ccvote.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_culture_councillor_boys.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_culture_councillor_boys_result.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_culture_councillor_girls.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_culture_councillor_girls_result.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_dcc_boys.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_dccgirls_vote.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_ddc_boys_result.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_ddc_girls_result.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_games_councillor_girls.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_games_councillor_girls_result.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_games_councillor_vote.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_girls_vote.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_male_page.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_manifesto_list.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_manifesto_recycleview.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_register_candidate.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_registration.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_update_candidate_view.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_update_manifestos.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_user_page.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_view_candidates.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_view_result.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_vote.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/activity_vote_list.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/login.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/result_list.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/toolbar.xml" value="0.1" />
-        <entry key="..\:/CSTVotingSystem/app/src/main/res/layout/update_candidate_one.xml" value="0.1" />
         <entry key="..\:/Users/USER/CSTVotingSystem/app/src/main/res/drawable/card.xml" value="0.159" />
         <entry key="..\:/Users/USER/CSTVotingSystem/app/src/main/res/drawable/outline.xml" value="0.159" />
         <entry key="..\:/Users/USER/CSTVotingSystem/app/src/main/res/drawable/rounded.xml" value="0.159" />
@@ -153,6 +119,13 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/activity_vote_list.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/login.xml" value="0.1859375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/CSTVotingSystem/app/src/main/res/layout/singlecandidates.xml" value="0.2" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_adminpage.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_boys_vote.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_cacgirls_vote.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_candidate_list.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_dcc_boys.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_dccgirls_vote.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/user/Desktop/CSTVotingSystem/app/src/main/res/layout/activity_vote_list.xml" value="0.2" />
       </map>
     </option>
   </component>
